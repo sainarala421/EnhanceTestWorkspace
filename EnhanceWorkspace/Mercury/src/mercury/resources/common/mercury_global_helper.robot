@@ -307,11 +307,75 @@ Wait For Element Status To Change
     \    Reload Page
     Run Keyword Unless    ${t_isStatusChanged}    Fail    "The status has not changed!"
 
+#===========================================#
+#               Link Checker                #
+#===========================================#
+#*************** WHEN **********************#
+User Gets All Links From "${e_ELEMENT_NAME}" "${e_ELEMENT_TYPE}"
+    [Documentation]    This When statement gets all the a href from the specified xpath parent element
+    ...    Note that the argument locator must be a parent xpath.
+    Comment    Count the umber Of Links on the Page
+    ${t_linksCount}=    Get Matching Xpath Count    ${${e_ELEMENT_NAME}_${e_ELEMENT_TYPE}}//a
+    Comment    Log links count
+    Log    ${t_linksCount}
+    Comment    Create a list to store link texts
+    @{t_linkItemsAnchorText}    Create List
+    @{t_linkItemsURL}    Create List
+    Comment    Loop through all links and store links value that has length more than 1 character
+    : FOR    ${INDEX}    IN RANGE    1    ${t_linksCount}-1
+    \    Log    ${INDEX}
+    \    ${t_linkAnchorText}=    Get Text    xpath=(${${e_ELEMENT_NAME}_${e_ELEMENT_TYPE}}//a)[${INDEX}]
+    \    ${t_linkURL}=    Get Element Attribute    xpath=(${${e_ELEMENT_NAME}_${e_ELEMENT_TYPE}}//a)[${INDEX}]@href
+    \    Log    ${t_linkAnchorText}
+    \    Log    ${t_linkURL}
+    # \    ${t_linkURLlength}    Get Length    ${t_linkURL}
+    \    Run Keyword Unless    '${t_linkURL}' == '${EMPTY}' or '${t_linkURL}' == '${None}'     Run Keywords
+    ...    Append To List    ${t_linkItemsURL}    ${t_linkURL}
+    ...    AND    Append To List    ${t_linkItemsAnchorText}    ${t_linkAnchorText}
+    Set Suite Variable    ${s_LINK_ITEMS_URL}    ${t_linkItemsURL}
+    Set Suite Variable    ${s_LINK_ITEMS_ANCHOR_TEXT}    ${t_linkItemsAnchorText}
+
+#*************** THEN **********************#
+Links Should Not Return An Error
+    [Documentation]    This Then statement performs get request on the given URI using the base URL
+    ...    This keyword should be used as an assertion or when statement for User Gets All Links From "${e_ELEMENT_NAME}" "${e_ELEMENT_TYPE}"
+    Log Many    ${s_LINK_ITEMS_URL}
+    Remove Values From List    ${s_LINK_ITEMS_URL}    javascript:void(0)
+    ${t_linkItemsLength}    Get Length    ${s_LINK_ITEMS_URL}
+    Comment    Loop through the links list and perform a Get Request on the link URI
+    @{t_errorMessages}    Create List
+    :FOR    ${INDEX}    IN range    ${t_linkItemsLength}
+    \    Log    Anchor Text: ${s_LINK_ITEMS_ANCHOR_TEXT[${INDEX}]}; URL Info: ${s_LINK_ITEMS_URL[${INDEX}]}
+    \    Log To Console    ${\n} Anchor Text: ${s_LINK_ITEMS_ANCHOR_TEXT[${INDEX}]}; URL Info: ${s_LINK_ITEMS_URL[${INDEX}]}
+    \    ${t_base_url} =    Get Regexp Matches    ${s_LINK_ITEMS_URL[${INDEX}]}    ${BASE_URL_REGEX}
+    \    User Creates "${t_base_url[0]}" Global Session
+    \    ${t_uri} =    Remove String Using Regexp    ${s_LINK_ITEMS_URL[${INDEX}]}    ${BASE_URL_REGEX}
+    \    ${t_flag}    ${t_response}
+    ...    Run Keyword And Ignore Error
+    ...    Get Request    gafLoginSession    ${t_uri}
+    \    ${t_responseCode}    Run Keyword And Return Status
+    ...    Run Keyword If    '${t_flag}'=='PASS'
+    ...    Should Be Equal As Strings    ${t_response.status_code}    200
+    \    Run Keyword Unless    ${t_responseCode}
+    ...    Append To List    ${t_errorMessages}    error :${s_LINK_ITEMS_URL[${INDEX}]} | ${t_response.status_code}
+    \    Delete All Sessions
+    Comment    Assert that there is no error message on get requests on links
+    ${t_checkErrorMessage} =    Run Keyword And Return Status    Lists Should Be Equal    ${t_errorMessages}    ${EMPTY}
+    Run Keyword Unless    ${t_checkErrorMessage}    Fail    Link \ assertion Failed with msg:\n@{t_errorMessages}
+
 #==============================================================#
 #                         GLOBAL TEST TEMPLATES
 #==============================================================#
-Guest User Has Successfully Loaded "${e_TARGET_PAGE_NAME}" Page Through "${e_SOURCE_PAGE_SECTION}"
+# Guest User Has Successfully Visited "${e_TARGET_PAGE}" Page Through "${e_SOURCE_PAGE}"
+#     [Documentation]    This template tests the link and its associated page's section.
+#     Given User Is In "${e_SOURCE_PAGE}" Page
+#     When User Clicks "${e_TARGET_PAGE}" "Link"
+#     Then User Should Be Redirected To "${e_TARGET_PAGE}" Page
+
+Guest User Has Successfully Visited "${e_TARGET_PAGE}" Page Through "${e_NAV_TYPE}" From "${e_SOURCE_PAGE}"
     [Documentation]    This template tests the link and its associated page's section.
-    Given User Is In "${e_SOURCE_PAGE_SECTION.sourcepage}" Page
-    When User Clicks "${e_SOURCE_PAGE_SECTION.section}" "${e_TARGET_PAGE_NAME}" Link
-    Then User Should Be Redirected To "${e_TARGET_PAGE_NAME}" Page
+    ${t_menu_type} =    Set Variable If     '${e_NAV_TYPE}' == 'Main Menu'
+    ...    ${EMPTY}    ${e_NAV_TYPE}
+    Given User Is In "${e_SOURCE_PAGE}" Page
+    When User Clicks "${e_TARGET_PAGE} ${t_menu_type}" "Link"
+    Then User Should Be Redirected To "${e_TARGET_PAGE}" Page

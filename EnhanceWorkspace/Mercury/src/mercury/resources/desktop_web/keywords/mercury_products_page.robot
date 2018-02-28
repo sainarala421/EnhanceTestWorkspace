@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     This resource file contains all elements/locators for testing Mercury's home page
-Resource          ${MERCURY_VARIABLE_DIR}mercury_home_page_constants.robot
+Resource          ${MERCURY_VARIABLE_DIR}mercury_products_page_constants.robot
+Resource          ${MERCURY_VARIABLE_DIR}mercury_global_page_constants.robot
 
 *** Keywords ***
 #==============================================================#
