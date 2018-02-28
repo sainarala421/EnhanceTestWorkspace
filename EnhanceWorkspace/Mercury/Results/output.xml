@@ -1,0 +1,4277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180222 16:27:55.264" generator="Robot 3.0.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace" id="s1" name="MercuryWorkspace">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace/src" id="s1-s1" name="Src">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace/src/mercury" id="s1-s1-s1" name="Mercury">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace/src/mercury/suite" id="s1-s1-s1-s1" name="Suite">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace/src/mercury/suite/desktop_web" id="s1-s1-s1-s1-s1" name="Desktop Web">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace/src/mercury/suite/desktop_web/availabilitytest" id="s1-s1-s1-s1-s1-s1" name="Availabilitytest">
+<suite source="/Users/jarvis2/Documents/MercuryWorkspace/src/mercury/suite/desktop_web/availabilitytest/MercuryHomePageAvailabilityTest.robot" id="s1-s1-s1-s1-s1-s1-s1" name="MercuryHomePageAvailabilityTest">
+<kw type="setup" name="Launch Mercury Home Page" library="mercury_launch_webdriver">
+<doc>This keyword can be used to launch browser on a test setup.</doc>
+<kw name="Browser Is Open" library="mercury_launch_webdriver">
+<arguments>
+<arg>${/}</arg>
+<arg>${BROWSER}</arg>
+<arg>${ALIAS1}</arg>
+</arguments>
+<kw name="Setup Desired Capabilities" library="mercury_launch_webdriver">
+<arguments>
+<arg>${p_alias}</arg>
+</arguments>
+<kw name="Setup Server" library="mercury_launch_webdriver">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Get Environment Variable</arg>
+<arg>AWS_ENABLED</arg>
+</arguments>
+<assign>
+<var>${hasEnvVar}</var>
+</assign>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<doc>Returns the value of an environment variable with the given name.</doc>
+<arguments>
+<arg>AWS_ENABLED</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:27:55.677" starttime="20180222 16:27:55.676"></status>
+</kw>
+<msg timestamp="20180222 16:27:55.677" level="INFO">${hasEnvVar} = True</msg>
+<status status="PASS" endtime="20180222 16:27:55.677" starttime="20180222 16:27:55.676"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${hasEnvVar}' == 'True'</arg>
+<arg>Set Global Variable</arg>
+<arg>${SERVER_IS_AWS}</arg>
+<arg>%{AWS_ENABLED}</arg>
+</arguments>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${SERVER_IS_AWS}</arg>
+<arg>%{AWS_ENABLED}</arg>
+</arguments>
+<msg timestamp="20180222 16:27:55.678" level="INFO">${SERVER_IS_AWS} = 0</msg>
+<status status="PASS" endtime="20180222 16:27:55.678" starttime="20180222 16:27:55.677"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:27:55.678" starttime="20180222 16:27:55.677"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:27:55.678" starttime="20180222 16:27:55.676"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}' == 'firefox' or '${BROWSER}' == 'chrome'</arg>
+<arg>Setup Desired Capabilities For Firefox</arg>
+<arg>ELSE IF</arg>
+<arg>'${BROWSER}'=='ie' and '${p_alias}'=='${ALIAS1}'</arg>
+<arg>Setup Desired Capabilities For IE</arg>
+<arg>ELSE IF</arg>
+<arg>'${BROWSER}'=='ie' and '${p_alias}'=='${ALIAS2}'</arg>
+<arg>Setup Desired Private Browsing Capabilities For IE</arg>
+</arguments>
+<kw name="Setup Desired Capabilities For Firefox" library="webdriver_config">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].DesiredCapabilities.FIREFOX</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${t_DefaultDC}</var>
+</assign>
+<msg timestamp="20180222 16:27:55.680" level="INFO">${t_DefaultDC} = {'acceptInsecureCerts': True, 'browserName': 'firefox', 'marionette': True}</msg>
+<status status="PASS" endtime="20180222 16:27:55.680" starttime="20180222 16:27:55.679"></status>
+</kw>
+<kw name="Copy Dictionary" library="Collections">
+<doc>Returns a copy of the given dictionary.</doc>
+<arguments>
+<arg>${t_DefaultDC}</arg>
+</arguments>
+<assign>
+<var>${DC}</var>
+</assign>
+<msg timestamp="20180222 16:27:55.680" level="INFO">${DC} = {'acceptInsecureCerts': True, 'browserName': 'firefox', 'marionette': True}</msg>
+<status status="PASS" endtime="20180222 16:27:55.680" starttime="20180222 16:27:55.680"></status>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<arguments>
+<arg>${DC}</arg>
+<arg>platform=${PLATFORM}</arg>
+<arg>nativeEvents=${NATIVE_EVENTS}</arg>
+<arg>unexpectedAlertBehaviour=${ALERT_BEHAVIOUR}</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:27:55.681" starttime="20180222 16:27:55.681"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${DC}</arg>
+</arguments>
+<msg timestamp="20180222 16:27:55.681" level="INFO">{u'platform': u'WINDOWS', 'browserName': 'firefox', u'nativeEvents': False, 'marionette': True, 'acceptInsecureCerts': True, u'unexpectedAlertBehaviour': u'dismiss'}</msg>
+<status status="PASS" endtime="20180222 16:27:55.681" starttime="20180222 16:27:55.681"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${DESIRED_CAPABILITY}</arg>
+<arg>${DC}</arg>
+</arguments>
+<msg timestamp="20180222 16:27:55.682" level="INFO">${DESIRED_CAPABILITY} = {u'platform': u'WINDOWS', 'browserName': 'firefox', u'nativeEvents': False, 'marionette': True, 'acceptInsecureCerts': True, u'unexpectedAlertBehaviour': u'dismiss'}</msg>
+<status status="PASS" endtime="20180222 16:27:55.682" starttime="20180222 16:27:55.681"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:27:55.682" starttime="20180222 16:27:55.679"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:27:55.682" starttime="20180222 16:27:55.678"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:27:55.682" starttime="20180222 16:27:55.676"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie' and '${p_alias}'=='${ALIAS2}'</arg>
+</arguments>
+<assign>
+<var>${t_iePrivateBrowser}</var>
+</assign>
+<msg timestamp="20180222 16:27:55.683" level="INFO">${t_iePrivateBrowser} = False</msg>
+<status status="PASS" endtime="20180222 16:27:55.683" starttime="20180222 16:27:55.682"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${SERVER_IS_AWS}' == '1' or '${t_iePrivateBrowser}'=='True'</arg>
+<arg>Browser Is Launched</arg>
+<arg>${p_urlExt}</arg>
+<arg>${p_browser}</arg>
+<arg>${p_alias}</arg>
+<arg>${LOCALHOST}</arg>
+<arg>${DESIRED_CAPABILITY}</arg>
+<arg>ELSE IF</arg>
+<arg>'${SERVER_IS_AWS}' == '0'</arg>
+<arg>Browser Is Launched</arg>
+<arg>${p_urlExt}</arg>
+<arg>${p_browser}</arg>
+<arg>${p_alias}</arg>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<kw name="Browser Is Launched" library="mercury_launch_webdriver">
+<arguments>
+<arg>${p_urlExt}</arg>
+<arg>${p_browser}</arg>
+<arg>${p_alias}</arg>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<kw name="Setup Global Timeout" library="mercury_launch_webdriver">
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${MERCURY_BASE_URL}'!='https://www.mercury.co.nz'</arg>
+<arg>Set Global Variable</arg>
+<arg>${TIMEOUT}</arg>
+<arg>90 sec</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:27:55.684" starttime="20180222 16:27:55.684"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:27:55.684" starttime="20180222 16:27:55.684"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Contain</arg>
+<arg>${SUITE DOCUMENTATION.lower()}</arg>
+<arg>product:mercury</arg>
+</arguments>
+<assign>
+<var>${t_baseURLISSkyTV}</var>
+</assign>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${SUITE DOCUMENTATION.lower()}</arg>
+<arg>product:mercury</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:27:55.685" starttime="20180222 16:27:55.685"></status>
+</kw>
+<msg timestamp="20180222 16:27:55.685" level="INFO">${t_baseURLISSkyTV} = True</msg>
+<status status="PASS" endtime="20180222 16:27:55.685" starttime="20180222 16:27:55.685"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${t_baseURLISSkyTV}</arg>
+<arg>MERCURY</arg>
+</arguments>
+<assign>
+<var>${t_baseURL}</var>
+</assign>
+<msg timestamp="20180222 16:27:55.686" level="INFO">${t_baseURL} = MERCURY</msg>
+<status status="PASS" endtime="20180222 16:27:55.686" starttime="20180222 16:27:55.686"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${g_BASE_URL}</arg>
+<arg>${t_baseURL}</arg>
+</arguments>
+<msg timestamp="20180222 16:27:55.688" level="INFO">${g_BASE_URL} = MERCURY</msg>
+<status status="PASS" endtime="20180222 16:27:55.688" starttime="20180222 16:27:55.686"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${HEADLESS}</arg>
+<arg>Start Virtual Display</arg>
+<arg>${DESKTOP_BROWSER_WIDTH}</arg>
+<arg>${DESKTOP_BROWSER_HEIGHT}</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:27:55.688" starttime="20180222 16:27:55.688"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='chrome' and '${SERVER_IS_AWS}' == '1'</arg>
+<arg>Open Chrome Browser Using Create Webdriver</arg>
+<arg>${p_urlExt}</arg>
+<arg>${p_alias}</arg>
+<arg>${p_remoteUrl}</arg>
+<arg>ELSE IF</arg>
+<arg>'${BROWSER}'=='chrome' and '${SERVER_IS_AWS}' == '0'</arg>
+<arg>Open No Sandbox Chrome Browser</arg>
+<arg>${p_urlExt}</arg>
+<arg>${p_alias}</arg>
+<arg>ELSE IF</arg>
+<arg>'${BROWSER}'=='firefox'</arg>
+<arg>Open Firefox Browser With Desired Capabilities</arg>
+<arg>${${g_BASE_URL}_BASE_URL}${p_urlExt}</arg>
+<arg>${p_alias}</arg>
+<arg>${p_remoteUrl}</arg>
+<arg>${p_desiredCapability}</arg>
+</arguments>
+<kw name="Open No Sandbox Chrome Browser" library="mercury_launch_webdriver">
+<arguments>
+<arg>${p_urlExt}</arg>
+<arg>${p_alias}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${options}</var>
+</assign>
+<msg timestamp="20180222 16:27:55.690" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x101ced290&gt;</msg>
+<status status="PASS" endtime="20180222 16:27:55.690" starttime="20180222 16:27:55.690"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:27:55.690" starttime="20180222 16:27:55.690"></status>
+</kw>
+<kw name="Create Webdriver" library="ExtendedSelenium2Library">
+<doc>Creates an instance of a WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>alias=${p_alias}</arg>
+<arg>chrome_options=${options}</arg>
+</arguments>
+<msg timestamp="20180222 16:27:55.691" level="INFO">Creating an instance of the Chrome WebDriver</msg>
+<status status="PASS" endtime="20180222 16:28:01.342" starttime="20180222 16:27:55.690"></status>
+</kw>
+<kw name="Go To" library="ExtendedSelenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${${g_BASE_URL}_BASE_URL}${p_urlExt}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:01.343" level="INFO">Opening url 'https://www.mercury.co.nz/'</msg>
+<status status="PASS" endtime="20180222 16:28:03.081" starttime="20180222 16:28:01.343"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:03.081" starttime="20180222 16:27:55.689"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:03.081" starttime="20180222 16:27:55.689"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='chrome'</arg>
+<arg>Get Chrome Test Environment Details</arg>
+</arguments>
+<kw name="Get Chrome Test Environment Details" library="mercury_launch_webdriver">
+<doc>This test is for logging the test environment details.</doc>
+<kw name="Get Library Instance" library="BuiltIn">
+<doc>Returns the currently active instance of the specified test library.</doc>
+<arguments>
+<arg>ExtendedSelenium2Library</arg>
+</arguments>
+<assign>
+<var>${t_extendedS2Library}</var>
+</assign>
+<msg timestamp="20180222 16:28:03.083" level="INFO">${t_extendedS2Library} = &lt;ExtendedSelenium2Library.ExtendedSelenium2Library object at 0x10185b190&gt;</msg>
+<status status="PASS" endtime="20180222 16:28:03.083" starttime="20180222 16:28:03.082"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${t_extendedS2Library._current_browser().capabilities}</arg>
+</arguments>
+<assign>
+<var>${t_capabilities}</var>
+</assign>
+<msg timestamp="20180222 16:28:03.083" level="INFO">${t_capabilities} = {u'takesScreenshot': True, u'acceptSslCerts': False, u'networkConnectionEnabled': False, u'mobileEmulationEnabled': False, u'unexpectedAlertBehaviour': u'', u'applicationCacheEnabled': False, u'locati...</msg>
+<status status="PASS" endtime="20180222 16:28:03.083" starttime="20180222 16:28:03.083"></status>
+</kw>
+<kw name="Set Suite Documentation" library="BuiltIn">
+<doc>Sets documentation for the current test suite.</doc>
+<arguments>
+<arg>[TEST ENVIRONMENT]:</arg>
+<arg>append = True</arg>
+</arguments>
+<msg timestamp="20180222 16:28:03.083" level="INFO">Set suite documentation to:
+[PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page [TEST ENVIRONMENT]:</msg>
+<status status="PASS" endtime="20180222 16:28:03.084" starttime="20180222 16:28:03.083"></status>
+</kw>
+<kw name="Set Suite Documentation" library="BuiltIn">
+<doc>Sets documentation for the current test suite.</doc>
+<arguments>
+<arg>Chromedriver Version: ${t_capabilities['chrome']['chromedriverVersion']};</arg>
+<arg>append = True</arg>
+</arguments>
+<msg timestamp="20180222 16:28:03.084" level="INFO">Set suite documentation to:
+[PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page [TEST ENVIRONMENT]: Chromedriver Version: 2.35.528157 (4429ca2590d6988c0745c24c8858745aaaec01ef);</msg>
+<status status="PASS" endtime="20180222 16:28:03.084" starttime="20180222 16:28:03.084"></status>
+</kw>
+<kw name="Set Suite Documentation" library="BuiltIn">
+<doc>Sets documentation for the current test suite.</doc>
+<arguments>
+<arg>Browser: ${t_capabilities['browserName']};</arg>
+<arg>append = True</arg>
+</arguments>
+<msg timestamp="20180222 16:28:03.085" level="INFO">Set suite documentation to:
+[PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page [TEST ENVIRONMENT]: Chromedriver Version: 2.35.528157 (4429ca2590d6988c0745c24c8858745aaaec01ef); Browser: chrome;</msg>
+<status status="PASS" endtime="20180222 16:28:03.085" starttime="20180222 16:28:03.084"></status>
+</kw>
+<kw name="Set Suite Documentation" library="BuiltIn">
+<doc>Sets documentation for the current test suite.</doc>
+<arguments>
+<arg>Browser Version: ${t_capabilities['version']};</arg>
+<arg>append = True</arg>
+</arguments>
+<msg timestamp="20180222 16:28:03.086" level="INFO">Set suite documentation to:
+[PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page [TEST ENVIRONMENT]: Chromedriver Version: 2.35.528157 (4429ca2590d6988c0745c24c8858745aaaec01ef); Browser: chrome; Browser Version: 64.0.3282.167;</msg>
+<status status="PASS" endtime="20180222 16:28:03.086" starttime="20180222 16:28:03.085"></status>
+</kw>
+<kw name="Set Suite Documentation" library="BuiltIn">
+<doc>Sets documentation for the current test suite.</doc>
+<arguments>
+<arg>Platform: ${t_capabilities['platform']};</arg>
+<arg>append = True</arg>
+</arguments>
+<msg timestamp="20180222 16:28:03.086" level="INFO">Set suite documentation to:
+[PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page [TEST ENVIRONMENT]: Chromedriver Version: 2.35.528157 (4429ca2590d6988c0745c24c8858745aaaec01ef); Browser: chrome; Browser Version: 64.0.3282.167; Platform: Mac OS X;</msg>
+<status status="PASS" endtime="20180222 16:28:03.086" starttime="20180222 16:28:03.086"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Capabilities: ${t_capabilities}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:03.087" level="INFO">Capabilities: {u'takesScreenshot': True, u'acceptSslCerts': False, u'networkConnectionEnabled': False, u'mobileEmulationEnabled': False, u'unexpectedAlertBehaviour': u'', u'applicationCacheEnabled': False, u'locationContextEnabled': True, u'rotatable': False, u'acceptInsecureCerts': False, u'hasTouchScreen': False, u'platform': u'Mac OS X', u'version': u'64.0.3282.167', u'nativeEvents': True, u'handlesAlerts': True, u'takesHeapSnapshot': True, u'javascriptEnabled': True, u'databaseEnabled': False, u'browserName': u'chrome', u'webStorageEnabled': True, u'browserConnectionEnabled': False, u'cssSelectorsEnabled': True, u'chrome': {u'chromedriverVersion': u'2.35.528157 (4429ca2590d6988c0745c24c8858745aaaec01ef)', u'userDataDir': u'/var/folders/cy/5v18wgm52dsbld6fzcy_6jl00000gn/T/.org.chromium.Chromium.ae7ajU'}, u'setWindowRect': True, u'pageLoadStrategy': u'normal'}</msg>
+<status status="PASS" endtime="20180222 16:28:03.087" starttime="20180222 16:28:03.087"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:03.087" starttime="20180222 16:28:03.082"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:03.087" starttime="20180222 16:28:03.082"></status>
+</kw>
+<kw name="Maximize Browser Window" library="ExtendedSelenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20180222 16:28:04.417" starttime="20180222 16:28:03.087"></status>
+</kw>
+<kw name="Set Selenium Speed" library="ExtendedSelenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>.5</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:04.417" starttime="20180222 16:28:04.417"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:04.417" starttime="20180222 16:27:55.683"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:04.417" starttime="20180222 16:27:55.683"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:04.418" starttime="20180222 16:27:55.675"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:04.418" starttime="20180222 16:27:55.675"></status>
+</kw>
+<test id="s1-s1-s1-s1-s1-s1-s1-t1" name="User Has Successfully Visited The Mercury Home Page">
+<kw name="Given User Is In &quot;Mercury Home&quot; Page" library="mercury_global_helper">
+<doc>This keyword asserts that the url value of the page is correct, otherwise, Go To keyword is executed.</doc>
+<kw name="User Is Forwarded To &quot;${e_PAGE_NAME}&quot; Page" library="mercury_global_helper">
+<doc>This keyword asserts that the url value of the target page is correct.</doc>
+<assign>
+<var>${t_extURL}</var>
+<var>${t_isPageUrl}</var>
+</assign>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>'${e_PAGE_NAME}' == 'Mercury Home' or '${e_PAGE_NAME}' == 'Mercury'</arg>
+<arg>${EMPTY}</arg>
+<arg>${${e_PAGE_NAME}_URL_EXT}</arg>
+</arguments>
+<assign>
+<var>${t_extURL}</var>
+</assign>
+<msg timestamp="20180222 16:28:04.420" level="INFO">${t_extURL} = </msg>
+<status status="PASS" endtime="20180222 16:28:04.421" starttime="20180222 16:28:04.420"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Location Should Contain</arg>
+<arg>${t_extURL}</arg>
+</arguments>
+<assign>
+<var>${r_isPageUrl}</var>
+</assign>
+<kw name="Location Should Contain" library="ExtendedSelenium2Library">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${t_extURL}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:04.930" level="INFO">Current location contains ''.</msg>
+<status status="PASS" endtime="20180222 16:28:04.930" starttime="20180222 16:28:04.421"></status>
+</kw>
+<msg timestamp="20180222 16:28:04.930" level="INFO">${r_isPageUrl} = True</msg>
+<status status="PASS" endtime="20180222 16:28:04.930" starttime="20180222 16:28:04.421"></status>
+</kw>
+<kw name="Log Location" library="ExtendedSelenium2Library">
+<doc>Logs and returns the current location.</doc>
+<msg timestamp="20180222 16:28:05.440" level="INFO">https://www.mercury.co.nz/</msg>
+<status status="PASS" endtime="20180222 16:28:05.440" starttime="20180222 16:28:04.931"></status>
+</kw>
+<msg timestamp="20180222 16:28:05.441" level="INFO">${t_extURL} = </msg>
+<msg timestamp="20180222 16:28:05.441" level="INFO">${t_isPageUrl} = True</msg>
+<status status="PASS" endtime="20180222 16:28:05.441" starttime="20180222 16:28:04.419"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${t_isPageUrl}</arg>
+<arg>Go To</arg>
+<arg>${${g_BASE_URL}_BASE_URL}${t_extURL}</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:05.441" starttime="20180222 16:28:05.441"></status>
+</kw>
+<kw name="Log Location" library="ExtendedSelenium2Library">
+<doc>Logs and returns the current location.</doc>
+<msg timestamp="20180222 16:28:05.948" level="INFO">https://www.mercury.co.nz/</msg>
+<status status="PASS" endtime="20180222 16:28:05.949" starttime="20180222 16:28:05.441"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:05.949" starttime="20180222 16:28:04.419"></status>
+</kw>
+<kw name="Then The Mercury Home Page Should Be Loaded Successfully" library="mercury_home_page">
+<kw name="The &quot;Mercury Logo&quot; Should Be &quot;Visible&quot;" library="mercury_global_helper">
+<kw name="Wait Until Element &quot;${${e_ELEMENT}}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:05.951" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:05.951" starttime="20180222 16:28:05.951"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:05.954" starttime="20180222 16:28:05.954"></status>
+</kw>
+<msg timestamp="20180222 16:28:05.954" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:05.954" starttime="20180222 16:28:05.953"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:05.956" level="INFO">Verifying element 'id = logo' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:06.986" starttime="20180222 16:28:05.956"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:06.987" starttime="20180222 16:28:05.955"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:06.987" starttime="20180222 16:28:05.954"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:06.987" starttime="20180222 16:28:05.952"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:06.987" starttime="20180222 16:28:05.952"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:06.987" starttime="20180222 16:28:05.950"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:06.987" starttime="20180222 16:28:05.950"></status>
+</kw>
+<kw name="The &quot;Mercury Global Navigation&quot; Elements Should Be Loaded Successfully" library="mercury_global_helper">
+<doc>This keyword is used for asserting that the core elements of a page is visible.</doc>
+<kw name="Load JQuery Tool" library="mercury_global_helper">
+<kw name="Execute Javascript" library="ExtendedSelenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>(document.onload=function() {var script = document.createElement('script'); script.setAttribute("type", "text/javascript"); script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"); document.getElementsByTagName("head")[0].appendChild(script);})();</arg>
+</arguments>
+<msg timestamp="20180222 16:28:06.989" level="INFO">Executing JavaScript:
+(document.onload=function() {var script = document.createElement('script'); script.setAttribute("type", "text/javascript"); script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"); document.getElementsByTagName("head")[0].appendChild(script);})();</msg>
+<status status="PASS" endtime="20180222 16:28:07.495" starttime="20180222 16:28:06.989"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:07.495" starttime="20180222 16:28:06.988"></status>
+</kw>
+<kw name="List Of Elements &quot;@{${e_ELEMENTS_LIST}_CORE_ELEMENTS_LIST}&quot; Should Be &quot;Visible&quot;" library="mercury_global_helper">
+<doc>This keyword accepts pre-created list of elements or a number of elements separated by a comma as an argument and</doc>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${e_ELEMENTS_LIST}</arg>
+</arguments>
+<assign>
+<var>${t_isCount}</var>
+</assign>
+<msg timestamp="20180222 16:28:07.509" level="INFO">Length is 6</msg>
+<msg timestamp="20180222 16:28:07.509" level="INFO">${t_isCount} = 6</msg>
+<status status="PASS" endtime="20180222 16:28:07.509" starttime="20180222 16:28:07.509"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${t_isCount} == 1</arg>
+<arg>Split String</arg>
+<arg>@{e_ELEMENTS_LIST}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>@{t_createdListOfElements}</var>
+</assign>
+<msg timestamp="20180222 16:28:07.510" level="INFO">@{t_createdListOfElements} = [ ]</msg>
+<status status="PASS" endtime="20180222 16:28:07.510" starttime="20180222 16:28:07.509"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${t_isCount} == 1</arg>
+<arg>Set Variable</arg>
+<arg>@{t_createdListOfElements}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>@{e_ELEMENTS_LIST}</arg>
+</arguments>
+<assign>
+<var>@{t_listOfElements}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{e_ELEMENTS_LIST}</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:07.511" starttime="20180222 16:28:07.510"></status>
+</kw>
+<msg timestamp="20180222 16:28:07.511" level="INFO">@{t_listOfElements} = [ css = .nav-global a[href="/"] | css = .nav-global a[href="/About"] | css = .nav-global a[href="/for-business"] | css = .nav-global a[href="/Investors"] | css = .nav-global a[href="/Help"] | css = .n...</msg>
+<status status="PASS" endtime="20180222 16:28:07.511" starttime="20180222 16:28:07.510"></status>
+</kw>
+<kw type="for" name="${element} IN [ @{t_listOfElements} ]">
+<kw type="foritem" name="${element} = css = .nav-global a[href=&quot;/&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:07.512" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:07.512" starttime="20180222 16:28:07.512"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:07.513" starttime="20180222 16:28:07.513"></status>
+</kw>
+<msg timestamp="20180222 16:28:07.513" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:07.513" starttime="20180222 16:28:07.513"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:07.515" level="INFO">Verifying element 'css = .nav-global a[href="/"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:08.542" starttime="20180222 16:28:07.514"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:08.542" starttime="20180222 16:28:07.514"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:08.542" starttime="20180222 16:28:07.514"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:08.542" starttime="20180222 16:28:07.512"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:08.543" starttime="20180222 16:28:07.512"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:08.543" starttime="20180222 16:28:07.511"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:08.543" starttime="20180222 16:28:07.511"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .nav-global a[href=&quot;/About&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:08.544" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:08.544" starttime="20180222 16:28:08.544"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:08.546" starttime="20180222 16:28:08.546"></status>
+</kw>
+<msg timestamp="20180222 16:28:08.546" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:08.546" starttime="20180222 16:28:08.546"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:08.548" level="INFO">Verifying element 'css = .nav-global a[href="/About"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:09.577" starttime="20180222 16:28:08.548"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:09.578" starttime="20180222 16:28:08.547"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:09.578" starttime="20180222 16:28:08.547"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:09.578" starttime="20180222 16:28:08.545"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:09.578" starttime="20180222 16:28:08.545"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:09.578" starttime="20180222 16:28:08.543"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:09.578" starttime="20180222 16:28:08.543"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .nav-global a[href=&quot;/for-business&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:09.579" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:09.579" starttime="20180222 16:28:09.579"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:09.582" starttime="20180222 16:28:09.581"></status>
+</kw>
+<msg timestamp="20180222 16:28:09.582" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:09.582" starttime="20180222 16:28:09.581"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:09.584" level="INFO">Verifying element 'css = .nav-global a[href="/for-business"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:10.614" starttime="20180222 16:28:09.583"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:10.614" starttime="20180222 16:28:09.583"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:10.614" starttime="20180222 16:28:09.582"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:10.614" starttime="20180222 16:28:09.580"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:10.615" starttime="20180222 16:28:09.580"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:10.615" starttime="20180222 16:28:09.579"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:10.615" starttime="20180222 16:28:09.578"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .nav-global a[href=&quot;/Investors&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:10.616" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:10.616" starttime="20180222 16:28:10.616"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:10.618" starttime="20180222 16:28:10.618"></status>
+</kw>
+<msg timestamp="20180222 16:28:10.618" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:10.618" starttime="20180222 16:28:10.618"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:10.620" level="INFO">Verifying element 'css = .nav-global a[href="/Investors"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:11.653" starttime="20180222 16:28:10.620"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:11.653" starttime="20180222 16:28:10.619"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:11.653" starttime="20180222 16:28:10.619"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:11.654" starttime="20180222 16:28:10.617"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:11.654" starttime="20180222 16:28:10.616"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:11.654" starttime="20180222 16:28:10.615"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:11.654" starttime="20180222 16:28:10.615"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .nav-global a[href=&quot;/Help&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:11.656" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:11.656" starttime="20180222 16:28:11.655"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:11.659" starttime="20180222 16:28:11.659"></status>
+</kw>
+<msg timestamp="20180222 16:28:11.659" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:11.659" starttime="20180222 16:28:11.658"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:11.661" level="INFO">Verifying element 'css = .nav-global a[href="/Help"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:12.692" starttime="20180222 16:28:11.661"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:12.692" starttime="20180222 16:28:11.660"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:12.692" starttime="20180222 16:28:11.659"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:12.692" starttime="20180222 16:28:11.657"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:12.692" starttime="20180222 16:28:11.657"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:12.693" starttime="20180222 16:28:11.655"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:12.693" starttime="20180222 16:28:11.654"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .nav-global a[href=&quot;https://myaccount.mercury.co.nz&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:12.694" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:12.694" starttime="20180222 16:28:12.694"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:12.696" starttime="20180222 16:28:12.696"></status>
+</kw>
+<msg timestamp="20180222 16:28:12.697" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:12.697" starttime="20180222 16:28:12.696"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:12.698" level="INFO">Verifying element 'css = .nav-global a[href="https://myaccount.mercury.co.nz"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.698"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.697"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.697"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.695"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.695"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.693"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:12.693"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.732" starttime="20180222 16:28:07.511"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.733" starttime="20180222 16:28:07.508"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:13.733" starttime="20180222 16:28:06.988"></status>
+</kw>
+<kw name="The &quot;Mercury Global Primary Nav&quot; Elements Should Be Loaded Successfully" library="mercury_global_helper">
+<doc>This keyword is used for asserting that the core elements of a page is visible.</doc>
+<kw name="Load JQuery Tool" library="mercury_global_helper">
+<kw name="Execute Javascript" library="ExtendedSelenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>(document.onload=function() {var script = document.createElement('script'); script.setAttribute("type", "text/javascript"); script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"); document.getElementsByTagName("head")[0].appendChild(script);})();</arg>
+</arguments>
+<msg timestamp="20180222 16:28:13.734" level="INFO">Executing JavaScript:
+(document.onload=function() {var script = document.createElement('script'); script.setAttribute("type", "text/javascript"); script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"); document.getElementsByTagName("head")[0].appendChild(script);})();</msg>
+<status status="PASS" endtime="20180222 16:28:14.245" starttime="20180222 16:28:13.734"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:14.245" starttime="20180222 16:28:13.733"></status>
+</kw>
+<kw name="List Of Elements &quot;@{${e_ELEMENTS_LIST}_CORE_ELEMENTS_LIST}&quot; Should Be &quot;Visible&quot;" library="mercury_global_helper">
+<doc>This keyword accepts pre-created list of elements or a number of elements separated by a comma as an argument and</doc>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${e_ELEMENTS_LIST}</arg>
+</arguments>
+<assign>
+<var>${t_isCount}</var>
+</assign>
+<msg timestamp="20180222 16:28:14.261" level="INFO">Length is 6</msg>
+<msg timestamp="20180222 16:28:14.261" level="INFO">${t_isCount} = 6</msg>
+<status status="PASS" endtime="20180222 16:28:14.261" starttime="20180222 16:28:14.261"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${t_isCount} == 1</arg>
+<arg>Split String</arg>
+<arg>@{e_ELEMENTS_LIST}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>@{t_createdListOfElements}</var>
+</assign>
+<msg timestamp="20180222 16:28:14.262" level="INFO">@{t_createdListOfElements} = [ ]</msg>
+<status status="PASS" endtime="20180222 16:28:14.262" starttime="20180222 16:28:14.261"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${t_isCount} == 1</arg>
+<arg>Set Variable</arg>
+<arg>@{t_createdListOfElements}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>@{e_ELEMENTS_LIST}</arg>
+</arguments>
+<assign>
+<var>@{t_listOfElements}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{e_ELEMENTS_LIST}</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:14.263" starttime="20180222 16:28:14.263"></status>
+</kw>
+<msg timestamp="20180222 16:28:14.263" level="INFO">@{t_listOfElements} = [ css = #nav-primary a[href="/Products"] | css = #nav-primary a[href="/pricing"] | css = #nav-primary a[href="/join"] | css = #nav-primary a[href="/Moving-House"] | css = #nav-primary a[href="/MyAccou...</msg>
+<status status="PASS" endtime="20180222 16:28:14.263" starttime="20180222 16:28:14.262"></status>
+</kw>
+<kw type="for" name="${element} IN [ @{t_listOfElements} ]">
+<kw type="foritem" name="${element} = css = #nav-primary a[href=&quot;/Products&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:14.264" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:14.264" starttime="20180222 16:28:14.264"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:14.266" starttime="20180222 16:28:14.266"></status>
+</kw>
+<msg timestamp="20180222 16:28:14.266" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:14.266" starttime="20180222 16:28:14.265"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:14.268" level="INFO">Verifying element 'css = #nav-primary a[href="/Products"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:15.298" starttime="20180222 16:28:14.267"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:15.298" starttime="20180222 16:28:14.267"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:15.298" starttime="20180222 16:28:14.266"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:15.299" starttime="20180222 16:28:14.265"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:15.299" starttime="20180222 16:28:14.264"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:15.299" starttime="20180222 16:28:14.264"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:15.299" starttime="20180222 16:28:14.263"></status>
+</kw>
+<kw type="foritem" name="${element} = css = #nav-primary a[href=&quot;/pricing&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:15.300" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:15.301" starttime="20180222 16:28:15.300"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:15.303" starttime="20180222 16:28:15.302"></status>
+</kw>
+<msg timestamp="20180222 16:28:15.303" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:15.303" starttime="20180222 16:28:15.302"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:15.304" level="INFO">Verifying element 'css = #nav-primary a[href="/pricing"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:16.337" starttime="20180222 16:28:15.304"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:16.337" starttime="20180222 16:28:15.304"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:16.337" starttime="20180222 16:28:15.303"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:16.337" starttime="20180222 16:28:15.301"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:16.338" starttime="20180222 16:28:15.301"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:16.338" starttime="20180222 16:28:15.299"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:16.338" starttime="20180222 16:28:15.299"></status>
+</kw>
+<kw type="foritem" name="${element} = css = #nav-primary a[href=&quot;/join&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:16.339" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:16.339" starttime="20180222 16:28:16.339"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:16.342" starttime="20180222 16:28:16.342"></status>
+</kw>
+<msg timestamp="20180222 16:28:16.342" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:16.342" starttime="20180222 16:28:16.341"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:16.344" level="INFO">Verifying element 'css = #nav-primary a[href="/join"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:17.377" starttime="20180222 16:28:16.343"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:17.377" starttime="20180222 16:28:16.343"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:17.377" starttime="20180222 16:28:16.342"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:17.377" starttime="20180222 16:28:16.341"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:17.378" starttime="20180222 16:28:16.340"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:17.378" starttime="20180222 16:28:16.338"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:17.378" starttime="20180222 16:28:16.338"></status>
+</kw>
+<kw type="foritem" name="${element} = css = #nav-primary a[href=&quot;/Moving-House&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:17.379" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:17.379" starttime="20180222 16:28:17.379"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:17.381" starttime="20180222 16:28:17.381"></status>
+</kw>
+<msg timestamp="20180222 16:28:17.381" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:17.381" starttime="20180222 16:28:17.380"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:17.383" level="INFO">Verifying element 'css = #nav-primary a[href="/Moving-House"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:18.412" starttime="20180222 16:28:17.382"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:18.413" starttime="20180222 16:28:17.382"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:18.413" starttime="20180222 16:28:17.381"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:18.413" starttime="20180222 16:28:17.380"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:18.413" starttime="20180222 16:28:17.379"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:18.413" starttime="20180222 16:28:17.378"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:18.413" starttime="20180222 16:28:17.378"></status>
+</kw>
+<kw type="foritem" name="${element} = css = #nav-primary a[href=&quot;/MyAccount&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:18.415" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:18.415" starttime="20180222 16:28:18.414"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:18.417" starttime="20180222 16:28:18.417"></status>
+</kw>
+<msg timestamp="20180222 16:28:18.417" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:18.417" starttime="20180222 16:28:18.416"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:18.419" level="INFO">Verifying element 'css = #nav-primary a[href="/MyAccount"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:19.454" starttime="20180222 16:28:18.419"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:19.454" starttime="20180222 16:28:18.418"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:19.454" starttime="20180222 16:28:18.417"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:19.454" starttime="20180222 16:28:18.416"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:19.454" starttime="20180222 16:28:18.415"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:19.454" starttime="20180222 16:28:18.414"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:19.455" starttime="20180222 16:28:18.413"></status>
+</kw>
+<kw type="foritem" name="${element} = css = #nav-primary button.search__overlay-toggle">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:19.456" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:19.456" starttime="20180222 16:28:19.456"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:19.459" starttime="20180222 16:28:19.459"></status>
+</kw>
+<msg timestamp="20180222 16:28:19.459" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:19.459" starttime="20180222 16:28:19.458"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:19.461" level="INFO">Verifying element 'css = #nav-primary button.search__overlay-toggle' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:20.496" starttime="20180222 16:28:19.461"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.496" starttime="20180222 16:28:19.460"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.496" starttime="20180222 16:28:19.460"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:19.457"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:19.456"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:19.455"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:19.455"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:14.263"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:14.260"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:20.497" starttime="20180222 16:28:13.733"></status>
+</kw>
+<kw name="The &quot;Mercury Global Footers&quot; Elements Should Be Loaded Successfully" library="mercury_global_helper">
+<doc>This keyword is used for asserting that the core elements of a page is visible.</doc>
+<kw name="Load JQuery Tool" library="mercury_global_helper">
+<kw name="Execute Javascript" library="ExtendedSelenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>(document.onload=function() {var script = document.createElement('script'); script.setAttribute("type", "text/javascript"); script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"); document.getElementsByTagName("head")[0].appendChild(script);})();</arg>
+</arguments>
+<msg timestamp="20180222 16:28:20.499" level="INFO">Executing JavaScript:
+(document.onload=function() {var script = document.createElement('script'); script.setAttribute("type", "text/javascript"); script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"); document.getElementsByTagName("head")[0].appendChild(script);})();</msg>
+<status status="PASS" endtime="20180222 16:28:21.020" starttime="20180222 16:28:20.499"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:21.021" starttime="20180222 16:28:20.498"></status>
+</kw>
+<kw name="List Of Elements &quot;@{${e_ELEMENTS_LIST}_CORE_ELEMENTS_LIST}&quot; Should Be &quot;Visible&quot;" library="mercury_global_helper">
+<doc>This keyword accepts pre-created list of elements or a number of elements separated by a comma as an argument and</doc>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${e_ELEMENTS_LIST}</arg>
+</arguments>
+<assign>
+<var>${t_isCount}</var>
+</assign>
+<msg timestamp="20180222 16:28:21.038" level="INFO">Length is 23</msg>
+<msg timestamp="20180222 16:28:21.038" level="INFO">${t_isCount} = 23</msg>
+<status status="PASS" endtime="20180222 16:28:21.038" starttime="20180222 16:28:21.037"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${t_isCount} == 1</arg>
+<arg>Split String</arg>
+<arg>@{e_ELEMENTS_LIST}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>@{t_createdListOfElements}</var>
+</assign>
+<msg timestamp="20180222 16:28:21.038" level="INFO">@{t_createdListOfElements} = [ ]</msg>
+<status status="PASS" endtime="20180222 16:28:21.039" starttime="20180222 16:28:21.038"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${t_isCount} == 1</arg>
+<arg>Set Variable</arg>
+<arg>@{t_createdListOfElements}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>@{e_ELEMENTS_LIST}</arg>
+</arguments>
+<assign>
+<var>@{t_listOfElements}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{e_ELEMENTS_LIST}</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:21.039" starttime="20180222 16:28:21.039"></status>
+</kw>
+<msg timestamp="20180222 16:28:21.040" level="INFO">@{t_listOfElements} = [ jquery = .footer-top .logo-bee | jquery = .footer-top .footer-information .footer-call-or-email a.col-black | jquery = .footer-top a[href="/"] | jquery = .footer-top a[href="/Pricing"] | jquery = .f...</msg>
+<status status="PASS" endtime="20180222 16:28:21.040" starttime="20180222 16:28:21.039"></status>
+</kw>
+<kw type="for" name="${element} IN [ @{t_listOfElements} ]">
+<kw type="foritem" name="${element} = jquery = .footer-top .logo-bee">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:21.041" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:21.041" starttime="20180222 16:28:21.041"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:21.043" starttime="20180222 16:28:21.043"></status>
+</kw>
+<msg timestamp="20180222 16:28:21.043" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:21.043" starttime="20180222 16:28:21.042"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:21.044" level="INFO">Verifying element 'jquery = .footer-top .logo-bee' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.044"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.044"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.043"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.042"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.041"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.040"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:22.072" starttime="20180222 16:28:21.040"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top .footer-information .footer-call-or-email a.col-black">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:22.074" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:22.074" starttime="20180222 16:28:22.074"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:22.077" starttime="20180222 16:28:22.077"></status>
+</kw>
+<msg timestamp="20180222 16:28:22.077" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:22.077" starttime="20180222 16:28:22.076"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:22.079" level="INFO">Verifying element 'jquery = .footer-top .footer-information .footer-call-or-email a.col-black' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.079"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.078"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.078"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.075"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.075"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.073"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:23.105" starttime="20180222 16:28:22.073"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:23.107" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:23.107" starttime="20180222 16:28:23.106"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:23.109" starttime="20180222 16:28:23.109"></status>
+</kw>
+<msg timestamp="20180222 16:28:23.109" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:23.109" starttime="20180222 16:28:23.108"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:23.111" level="INFO">Verifying element 'jquery = .footer-top a[href="/"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:24.136" starttime="20180222 16:28:23.111"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:24.136" starttime="20180222 16:28:23.110"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:24.136" starttime="20180222 16:28:23.109"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:24.136" starttime="20180222 16:28:23.108"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:24.136" starttime="20180222 16:28:23.107"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:24.137" starttime="20180222 16:28:23.106"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:24.137" starttime="20180222 16:28:23.105"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Pricing&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:24.138" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:24.138" starttime="20180222 16:28:24.138"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:24.141" starttime="20180222 16:28:24.141"></status>
+</kw>
+<msg timestamp="20180222 16:28:24.141" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:24.141" starttime="20180222 16:28:24.140"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:24.143" level="INFO">Verifying element 'jquery = .footer-top a[href="/Pricing"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.143"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.142"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.142"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.139"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.139"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.137"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:25.169" starttime="20180222 16:28:24.137"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Products&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:25.171" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:25.171" starttime="20180222 16:28:25.171"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:25.174" starttime="20180222 16:28:25.173"></status>
+</kw>
+<msg timestamp="20180222 16:28:25.174" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:25.174" starttime="20180222 16:28:25.173"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:25.175" level="INFO">Verifying element 'jquery = .footer-top a[href="/Products"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:26.204" starttime="20180222 16:28:25.175"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:26.204" starttime="20180222 16:28:25.175"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:26.204" starttime="20180222 16:28:25.174"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:26.205" starttime="20180222 16:28:25.172"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:26.205" starttime="20180222 16:28:25.171"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:26.205" starttime="20180222 16:28:25.170"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:26.205" starttime="20180222 16:28:25.170"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Moving-House&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:26.207" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:26.207" starttime="20180222 16:28:26.206"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:26.209" starttime="20180222 16:28:26.209"></status>
+</kw>
+<msg timestamp="20180222 16:28:26.209" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:26.209" starttime="20180222 16:28:26.208"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:26.211" level="INFO">Verifying element 'jquery = .footer-top a[href="/Moving-House"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:27.240" starttime="20180222 16:28:26.211"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:27.241" starttime="20180222 16:28:26.210"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:27.241" starttime="20180222 16:28:26.209"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:27.241" starttime="20180222 16:28:26.208"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:27.241" starttime="20180222 16:28:26.207"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:27.241" starttime="20180222 16:28:26.205"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:27.241" starttime="20180222 16:28:26.205"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Join&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:27.243" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:27.243" starttime="20180222 16:28:27.243"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:27.245" starttime="20180222 16:28:27.245"></status>
+</kw>
+<msg timestamp="20180222 16:28:27.245" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:27.246" starttime="20180222 16:28:27.245"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:27.247" level="INFO">Verifying element 'jquery = .footer-top a[href="/Join"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:28.274" starttime="20180222 16:28:27.247"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:28.274" starttime="20180222 16:28:27.246"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:28.274" starttime="20180222 16:28:27.246"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:28.274" starttime="20180222 16:28:27.244"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:28.275" starttime="20180222 16:28:27.243"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:28.275" starttime="20180222 16:28:27.242"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:28.275" starttime="20180222 16:28:27.242"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/For-Business&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:28.276" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:28.276" starttime="20180222 16:28:28.276"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:28.279" starttime="20180222 16:28:28.278"></status>
+</kw>
+<msg timestamp="20180222 16:28:28.279" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:28.279" starttime="20180222 16:28:28.278"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:28.281" level="INFO">Verifying element 'jquery = .footer-top a[href="/For-Business"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:29.307" starttime="20180222 16:28:28.280"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:29.308" starttime="20180222 16:28:28.280"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:29.308" starttime="20180222 16:28:28.279"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:29.308" starttime="20180222 16:28:28.277"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:29.308" starttime="20180222 16:28:28.277"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:29.308" starttime="20180222 16:28:28.275"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:29.308" starttime="20180222 16:28:28.275"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Products&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:29.310" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:29.310" starttime="20180222 16:28:29.310"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:29.313" starttime="20180222 16:28:29.312"></status>
+</kw>
+<msg timestamp="20180222 16:28:29.313" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:29.313" starttime="20180222 16:28:29.312"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:29.314" level="INFO">Verifying element 'jquery = .footer-top a[href="/Products"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:30.334" starttime="20180222 16:28:29.314"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:30.335" starttime="20180222 16:28:29.314"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:30.335" starttime="20180222 16:28:29.313"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:30.335" starttime="20180222 16:28:29.311"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:30.335" starttime="20180222 16:28:29.310"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:30.335" starttime="20180222 16:28:29.309"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:30.335" starttime="20180222 16:28:29.308"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/For-Business/Business-Partners&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:30.337" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:30.337" starttime="20180222 16:28:30.337"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:30.340" starttime="20180222 16:28:30.339"></status>
+</kw>
+<msg timestamp="20180222 16:28:30.340" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:30.340" starttime="20180222 16:28:30.339"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:30.342" level="INFO">Verifying element 'jquery = .footer-top a[href="/For-Business/Business-Partners"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.341"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.341"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.340"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.338"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.337"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.336"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:31.370" starttime="20180222 16:28:30.335"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Investors&quot;]:eq(1)">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:31.372" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:31.372" starttime="20180222 16:28:31.372"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:31.374" starttime="20180222 16:28:31.374"></status>
+</kw>
+<msg timestamp="20180222 16:28:31.374" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:31.374" starttime="20180222 16:28:31.374"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:31.377" level="INFO">Verifying element 'jquery = .footer-top a[href="/Investors"]:eq(1)' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:32.403" starttime="20180222 16:28:31.376"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:32.403" starttime="20180222 16:28:31.375"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:32.403" starttime="20180222 16:28:31.375"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:32.403" starttime="20180222 16:28:31.373"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:32.404" starttime="20180222 16:28:31.372"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:32.404" starttime="20180222 16:28:31.371"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:32.404" starttime="20180222 16:28:31.371"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Help&quot;]:eq(1)">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:32.405" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:32.405" starttime="20180222 16:28:32.405"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:32.408" starttime="20180222 16:28:32.408"></status>
+</kw>
+<msg timestamp="20180222 16:28:32.408" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:32.408" starttime="20180222 16:28:32.407"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:32.410" level="INFO">Verifying element 'jquery = .footer-top a[href="/Help"]:eq(1)' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:33.436" starttime="20180222 16:28:32.410"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:33.436" starttime="20180222 16:28:32.409"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:33.437" starttime="20180222 16:28:32.409"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:33.437" starttime="20180222 16:28:32.407"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:33.437" starttime="20180222 16:28:32.406"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:33.437" starttime="20180222 16:28:32.404"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:33.437" starttime="20180222 16:28:32.404"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/About&quot;]:eq(1)">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:33.439" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:33.439" starttime="20180222 16:28:33.438"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:33.441" starttime="20180222 16:28:33.441"></status>
+</kw>
+<msg timestamp="20180222 16:28:33.441" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:33.441" starttime="20180222 16:28:33.441"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:33.444" level="INFO">Verifying element 'jquery = .footer-top a[href="/About"]:eq(1)' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:34.469" starttime="20180222 16:28:33.443"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:34.469" starttime="20180222 16:28:33.442"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:34.470" starttime="20180222 16:28:33.442"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:34.470" starttime="20180222 16:28:33.440"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:34.470" starttime="20180222 16:28:33.439"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:34.470" starttime="20180222 16:28:33.438"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:34.470" starttime="20180222 16:28:33.437"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/Help/Outages-Faults&quot;]:eq(1)">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:34.472" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:34.472" starttime="20180222 16:28:34.471"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:34.474" starttime="20180222 16:28:34.474"></status>
+</kw>
+<msg timestamp="20180222 16:28:34.474" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:34.474" starttime="20180222 16:28:34.473"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:34.476" level="INFO">Verifying element 'jquery = .footer-top a[href="/Help/Outages-Faults"]:eq(1)' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:35.502" starttime="20180222 16:28:34.476"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:35.503" starttime="20180222 16:28:34.475"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:35.503" starttime="20180222 16:28:34.474"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:35.503" starttime="20180222 16:28:34.473"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:35.503" starttime="20180222 16:28:34.472"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:35.503" starttime="20180222 16:28:34.471"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:35.503" starttime="20180222 16:28:34.470"></status>
+</kw>
+<kw type="foritem" name="${element} = jquery = .footer-top a[href=&quot;/About/Careers&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:35.505" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:35.505" starttime="20180222 16:28:35.505"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:35.507" starttime="20180222 16:28:35.507"></status>
+</kw>
+<msg timestamp="20180222 16:28:35.508" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:35.508" starttime="20180222 16:28:35.507"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:35.509" level="INFO">Verifying element 'jquery = .footer-top a[href="/About/Careers"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:36.533" starttime="20180222 16:28:35.509"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:36.533" starttime="20180222 16:28:35.508"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:36.533" starttime="20180222 16:28:35.508"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:36.533" starttime="20180222 16:28:35.506"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:36.533" starttime="20180222 16:28:35.505"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:36.533" starttime="20180222 16:28:35.504"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:36.534" starttime="20180222 16:28:35.504"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:36.535" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:36.535" starttime="20180222 16:28:36.535"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:36.537" starttime="20180222 16:28:36.537"></status>
+</kw>
+<msg timestamp="20180222 16:28:36.538" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:36.538" starttime="20180222 16:28:36.537"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:36.557" level="INFO">Verifying element 'css = .footer-down .footer-socials' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:37.586" starttime="20180222 16:28:36.539"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:37.586" starttime="20180222 16:28:36.538"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:37.586" starttime="20180222 16:28:36.538"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:37.587" starttime="20180222 16:28:36.536"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:37.587" starttime="20180222 16:28:36.536"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:37.587" starttime="20180222 16:28:36.534"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:37.587" starttime="20180222 16:28:36.534"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;/Privacy&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:37.588" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:37.588" starttime="20180222 16:28:37.588"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:37.591" starttime="20180222 16:28:37.590"></status>
+</kw>
+<msg timestamp="20180222 16:28:37.591" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:37.591" starttime="20180222 16:28:37.590"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:37.592" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="/Privacy"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:38.623" starttime="20180222 16:28:37.592"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:38.624" starttime="20180222 16:28:37.592"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:38.624" starttime="20180222 16:28:37.591"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:38.624" starttime="20180222 16:28:37.589"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:38.624" starttime="20180222 16:28:37.589"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:38.624" starttime="20180222 16:28:37.587"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:38.624" starttime="20180222 16:28:37.587"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;/Terms-Conditions&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:38.626" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:38.626" starttime="20180222 16:28:38.625"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:38.628" starttime="20180222 16:28:38.628"></status>
+</kw>
+<msg timestamp="20180222 16:28:38.628" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:38.628" starttime="20180222 16:28:38.627"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:38.630" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="/Terms-Conditions"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:39.661" starttime="20180222 16:28:38.630"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:39.661" starttime="20180222 16:28:38.629"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:39.662" starttime="20180222 16:28:38.629"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:39.662" starttime="20180222 16:28:38.627"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:39.662" starttime="20180222 16:28:38.626"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:39.662" starttime="20180222 16:28:38.625"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:39.662" starttime="20180222 16:28:38.624"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;https://www.facebook.com/mercurynz&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:39.664" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:39.664" starttime="20180222 16:28:39.664"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:39.667" starttime="20180222 16:28:39.666"></status>
+</kw>
+<msg timestamp="20180222 16:28:39.667" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:39.667" starttime="20180222 16:28:39.666"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:39.668" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="https://www.facebook.com/mercurynz"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.668"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.667"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.667"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.665"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.664"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.663"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:40.701" starttime="20180222 16:28:39.662"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;https://twitter.com/mercurynz&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:40.703" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:40.703" starttime="20180222 16:28:40.703"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:40.705" starttime="20180222 16:28:40.705"></status>
+</kw>
+<msg timestamp="20180222 16:28:40.705" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:40.705" starttime="20180222 16:28:40.704"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:40.707" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="https://twitter.com/mercurynz"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:41.742" starttime="20180222 16:28:40.707"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:41.742" starttime="20180222 16:28:40.706"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:41.743" starttime="20180222 16:28:40.705"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:41.743" starttime="20180222 16:28:40.704"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:41.743" starttime="20180222 16:28:40.703"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:41.743" starttime="20180222 16:28:40.702"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:41.744" starttime="20180222 16:28:40.702"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;https://www.instagram.com/mercury_nz/&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:41.745" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:41.745" starttime="20180222 16:28:41.745"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:41.747" starttime="20180222 16:28:41.747"></status>
+</kw>
+<msg timestamp="20180222 16:28:41.748" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:41.748" starttime="20180222 16:28:41.747"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:41.749" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="https://www.instagram.com/mercury_nz/"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:42.780" starttime="20180222 16:28:41.749"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:42.781" starttime="20180222 16:28:41.748"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:42.781" starttime="20180222 16:28:41.748"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:42.781" starttime="20180222 16:28:41.746"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:42.781" starttime="20180222 16:28:41.746"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:42.781" starttime="20180222 16:28:41.744"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:42.781" starttime="20180222 16:28:41.744"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;https://www.instagram.com/mercury_nz/&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:42.783" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:42.783" starttime="20180222 16:28:42.782"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:42.785" starttime="20180222 16:28:42.784"></status>
+</kw>
+<msg timestamp="20180222 16:28:42.785" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:42.785" starttime="20180222 16:28:42.784"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:42.787" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="https://www.instagram.com/mercury_nz/"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:43.811" starttime="20180222 16:28:42.786"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:43.811" starttime="20180222 16:28:42.785"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:43.812" starttime="20180222 16:28:42.785"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:43.812" starttime="20180222 16:28:42.783"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:43.812" starttime="20180222 16:28:42.783"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:43.812" starttime="20180222 16:28:42.782"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:43.812" starttime="20180222 16:28:42.781"></status>
+</kw>
+<kw type="foritem" name="${element} = css = .footer-down .footer-socials a[href=&quot;https://www.youtube.com/mercurynewzealand&quot;]">
+<kw name="Wait Until Element &quot;${element}&quot; Is &quot;${e_VISIBILITY}&quot;" library="mercury_global_helper">
+<doc>This keyword is used to wait for an element to become not visible</doc>
+<kw name="Convert To Lowercase" library="String">
+<doc>Converts string to lowercase.</doc>
+<arguments>
+<arg>${e_VISIBILITY}</arg>
+</arguments>
+<assign>
+<var>${t_visibility}</var>
+</assign>
+<msg timestamp="20180222 16:28:43.814" level="INFO">${t_visibility} = visible</msg>
+<status status="PASS" endtime="20180222 16:28:43.814" starttime="20180222 16:28:43.814"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${t_visibility}' == 'visible'</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+<arg>ELSE</arg>
+<arg>Run And Wait Until Keyword Succeeds</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run And Wait Until Keyword Succeeds" library="mercury_global_helper">
+<doc>This keyword is used in waiting for an element to be visible within the global timeout and interval</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${e_ELEMENT}</arg>
+</arguments>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<assign>
+<var>${isEqual}</var>
+</assign>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${p_arg2}</arg>
+<arg>No Operation</arg>
+</arguments>
+<status status="PASS" endtime="20180222 16:28:43.817" starttime="20180222 16:28:43.817"></status>
+</kw>
+<msg timestamp="20180222 16:28:43.817" level="INFO">${isEqual} = True</msg>
+<status status="PASS" endtime="20180222 16:28:43.817" starttime="20180222 16:28:43.816"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${isEqual}</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>ELSE</arg>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+<arg>${p_arg2}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>${TIMEOUT}</arg>
+<arg>${INTERVAL}</arg>
+<arg>${p_keyword}</arg>
+<arg>${p_arg1}</arg>
+</arguments>
+<kw name="Element Should Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is visible.</doc>
+<arguments>
+<arg>${p_arg1}</arg>
+</arguments>
+<msg timestamp="20180222 16:28:43.819" level="INFO">Verifying element 'css = .footer-down .footer-socials a[href="https://www.youtube.com/mercurynewzealand"]' is visible.</msg>
+<status status="PASS" endtime="20180222 16:28:44.847" starttime="20180222 16:28:43.818"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:43.818"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:43.817"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:43.816"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:43.815"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:43.813"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:43.813"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:21.040"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.848" starttime="20180222 16:28:21.037"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.849" starttime="20180222 16:28:20.498"></status>
+</kw>
+<status status="PASS" endtime="20180222 16:28:44.849" starttime="20180222 16:28:05.950"></status>
+</kw>
+<tags>
+<tag>AVAILABILITY</tag>
+<tag>HIGH</tag>
+<tag>MERCURY</tag>
+<tag>MercuryHomePageAvailabilityTest</tag>
+<tag>REGRESSION</tag>
+</tags>
+<status status="PASS" endtime="20180222 16:28:44.849" critical="yes" starttime="20180222 16:28:04.418"></status>
+</test>
+<doc>[PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page [TEST ENVIRONMENT]: Chromedriver Version: 2.35.528157 (4429ca2590d6988c0745c24c8858745aaaec01ef); Browser: chrome; Browser Version: 64.0.3282.167; Platform: Mac OS X;</doc>
+<status status="PASS" endtime="20180222 16:28:44.851" starttime="20180222 16:27:55.298"></status>
+</suite>
+<status status="PASS" endtime="20180222 16:28:44.853" starttime="20180222 16:27:55.297"></status>
+</suite>
+<status status="PASS" endtime="20180222 16:28:44.855" starttime="20180222 16:27:55.295"></status>
+</suite>
+<status status="PASS" endtime="20180222 16:28:44.857" starttime="20180222 16:27:55.294"></status>
+</suite>
+<status status="PASS" endtime="20180222 16:28:44.859" starttime="20180222 16:27:55.293"></status>
+</suite>
+<status status="PASS" endtime="20180222 16:28:44.860" starttime="20180222 16:27:55.291"></status>
+</suite>
+<status status="PASS" endtime="20180222 16:28:44.861" starttime="20180222 16:27:55.268"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">AVAILABILITY</stat>
+<stat fail="0" pass="1">HIGH</stat>
+<stat fail="0" pass="1">MERCURY</stat>
+<stat fail="0" pass="1">MercuryHomePageAvailabilityTest</stat>
+<stat fail="0" pass="1">REGRESSION</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="MercuryWorkspace" pass="1">MercuryWorkspace</stat>
+<stat fail="0" id="s1-s1" name="Src" pass="1">MercuryWorkspace.Src</stat>
+<stat fail="0" id="s1-s1-s1" name="Mercury" pass="1">MercuryWorkspace.Src.Mercury</stat>
+<stat fail="0" id="s1-s1-s1-s1" name="Suite" pass="1">MercuryWorkspace.Src.Mercury.Suite</stat>
+<stat fail="0" id="s1-s1-s1-s1-s1" name="Desktop Web" pass="1">MercuryWorkspace.Src.Mercury.Suite.Desktop Web</stat>
+<stat fail="0" id="s1-s1-s1-s1-s1-s1" name="Availabilitytest" pass="1">MercuryWorkspace.Src.Mercury.Suite.Desktop Web.Availabilitytest</stat>
+<stat fail="0" id="s1-s1-s1-s1-s1-s1-s1" name="MercuryHomePageAvailabilityTest" pass="1">MercuryWorkspace.Src.Mercury.Suite.Desktop Web.Availabilitytest.MercuryHomePageAvailabilityTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

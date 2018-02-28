@@ -1,0 +1,21 @@
+#==========================================================#
+#                  GLOBAL VARIABLES SETUP PATH
+#==========================================================#
+--variable GLOBAL_RESOURCES_FILE_PATH:../../../../../common/global_resources/
+--variable GLOBAL_FILE_PATH:../../../../common/global_resources/global_filepath.robot
+--variable MERCURY_GLOBAL_SETUP:../../../resources/common/mercury_global_setup.robot
+
+#==========================================================#
+#                  GLOBAL VARIABLES FOR TEST SUITES
+#==========================================================#
+
+#==========================================================#
+#                  FAIL OPTIONS
+#==========================================================#
+--exitonfailure
+
+#==========================================================#
+#                  OPTIONS
+#==========================================================#
+--exclude ARCHIVED
+
