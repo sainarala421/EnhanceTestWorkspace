@@ -14,3 +14,5 @@ User Has Successfully Visited The SkyTV Home Page
     And The "SkyTV Main Header" Elements Should Be Loaded Successfully
     And The "SkyTV Main Menu" Elements Should Be Loaded Successfully
 
+Another test case
+    Given Another Test Step
