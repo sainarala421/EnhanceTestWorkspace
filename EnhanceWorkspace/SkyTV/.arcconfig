@@ -1,7 +1,4 @@
 {
     "project.name": "robot-framework",
-    "phabricator.uri": "http://phabricator.enhanceconsulting.co.nz",
-    "load": [
-        "externals/arcanist/robotarc/src"
-    ],
+    "phabricator.uri": "http://phabricator.enhanceconsulting.co.nz"
 }
