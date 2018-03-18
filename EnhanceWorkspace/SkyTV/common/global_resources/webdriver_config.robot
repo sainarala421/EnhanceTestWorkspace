@@ -8,7 +8,7 @@ ${DESIRED_CAPABILITY}   Dynamic
 ${SERVER_IS_AWS}        0
 ${ALIAS1}               browser1
 ${ALIAS2}               browser2
-${FREELANCER_EXT}       /
+${ENHANCE_EXT}       /
 ${ALERT_BEHAVIOUR}      dismiss
 ${HEADLESS}             False
 

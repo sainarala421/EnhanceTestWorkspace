@@ -1,12 +1,12 @@
-Freelancer Robot Framework Test Suites
+Enhance Robot Framework Test Suites
 ======================================
 
 This repository contains our entire Robot Framework Test Suite which covers
 the following products / domains:
 
-  - Freelancer.com
-  - Freelancer Mobile
-  - Freelancer Desktop App
+  - Enhance.com
+  - Enhance Mobile
+  - Enhance Desktop App
   - Escrow
 
 Directory Structure
@@ -23,20 +23,20 @@ deployment workflow but not by Robot Framework itself.
 
 For more information on the directory structure, especially how tests are
 organized within the `src` directory, see the
-[Repository Directory Structure Docs](https://confluence.flnltd.com/x/1JtwAQ)
+[Repository Directory Structure Docs](https://confluence.enhanceltd.com/x/1JtwAQ)
 in Confluence.
 
 Setup
 -----
 
 Detailed information on how to setup your workstation can be found in our
-[Setup and Installation](https://confluence.flnltd.com/x/9ABK) guide in
+[Setup and Installation](https://confluence.enhanceltd.com/x/9ABK) guide in
 Confluence.
 
 Depending on your product group, you may or may not need to setup everything in
 the document (e.g. you only need the
-[SikuliX Robot Library](https://confluence.flnltd.com/x/bAdCAQ) if you are
-going to work on the Freelancer Desktop App).
+[SikuliX Robot Library](https://confluence.enhanceltd.com/x/bAdCAQ) if you are
+going to work on the Enhance Desktop App).
 
 Running Tests
 -------------
@@ -56,7 +56,7 @@ pybot --argumentfile argument_file.txt --include CONTEST src/
 ```
 
 A couple of helpers could be found in the `test_runner` directory. Check out
-the [Confluence Guide](https://confluence.flnltd.com/x/fYMoAQ) on running
+the [Confluence Guide](https://confluence.enhanceltd.com/x/fYMoAQ) on running
 Robot scripts for more examples.
 
 Docker Usage

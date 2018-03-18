@@ -1,10 +1,10 @@
 from setuptools import setup
 
 setup(
-    name='freelancercustomlibraries',
+    name='enhancecustomlibraries',
     version='0.1',
     description=(
-        'Collection of Robot Framework Libraries used by Freelancer.com'
+        'Collection of Robot Framework Libraries used by Enhance.com'
     ),
     packages=[
         'common/custom_libraries/etc',

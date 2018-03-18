@@ -295,7 +295,7 @@ Wait Until AngularJS Is Loaded
 #==========================================================#
 Wait For Element Status To Change
     [Documentation]    This keyword is used to wait for a certain element or functionality to
-    ...    reflect in flndev. It accepts keywords with one argument or two.
+    ...    reflect in enhancedev. It accepts keywords with one argument or two.
     [Arguments]    ${p_keyword}=${EMPTY}    ${p_element}=${EMPTY}   ${p_value}=${EMPTY}
     : FOR    ${iteration}    IN RANGE   5
     \    ${t_isStatusChanged} =    Run Keyword And Return Status

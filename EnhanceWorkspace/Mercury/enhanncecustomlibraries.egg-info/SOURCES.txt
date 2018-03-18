@@ -6,8 +6,8 @@ common/custom_libraries/etc/common.py
 common/custom_libraries/etc/date.py
 common/custom_libraries/etc/number.py
 common/custom_libraries/etc/testdata.py
-freelancercustomlibraries.egg-info/PKG-INFO
-freelancercustomlibraries.egg-info/SOURCES.txt
-freelancercustomlibraries.egg-info/dependency_links.txt
-freelancercustomlibraries.egg-info/requires.txt
-freelancercustomlibraries.egg-info/top_level.txt
+enhancecustomlibraries.egg-info/PKG-INFO
+enhancecustomlibraries.egg-info/SOURCES.txt
+enhancecustomlibraries.egg-info/dependency_links.txt
+enhancecustomlibraries.egg-info/requires.txt
+enhancecustomlibraries.egg-info/top_level.txt
