@@ -143,10 +143,12 @@ The "${e_ELEMENTS_LIST}" Elements Should Be Loaded Successfully
     [Documentation]    This keyword is used for asserting that the core elements of a page is visible.
     Load JQuery Tool
     List Of Elements "@{${e_ELEMENTS_LIST}_CORE_ELEMENTS_LIST}" Should Be "Visible"
-    ${t_variableExists}=    Run Keyword And Return Status
-    ...    Variable Should Exist    @{${e_ELEMENTS_LIST}_AB_TEST_ELEMENTS}
-    Run Keyword If    ${t_variableExists}
-    ...    One Of AB Test Elements Is Visible     @{${e_ELEMENTS_LIST}_AB_TEST_ELEMENTS}
+
+    # For purging
+    # ${t_variableExists}=    Run Keyword And Return Status
+    # ...    Variable Should Exist    @{${e_ELEMENTS_LIST}_AB_TEST_ELEMENTS}
+    # Run Keyword If    ${t_variableExists}
+    # ...    One Of AB Test Elements Is Visible     @{${e_ELEMENTS_LIST}_AB_TEST_ELEMENTS}
 
 # Given: should be used for Given statements
 The "${e_ELEMENTS_LIST}" Elements Are Loaded Successfully

@@ -13,8 +13,8 @@ Browser For External Website Is Launched
     ...    remote_url=${LOCALHOST}    desired_capabilities=${DESIRED_CAPABILITY}    ff_profile_dir=${FIREFOX_PROFILE_DIR}
     ...    ELSE IF    '${SERVER_IS_AWS}' == '0'
     ...    Open Browser    ${p_urlExt}    browser=${p_browser}    alias=${p_alias}
-    #Setup Browser Window Size
-    Maximize Browser Window
+    Setup Browser Window Size
+    # Maximize Browser Window
     Reload Page
 
 Browser Is Open
@@ -64,8 +64,8 @@ Browser Is Launched
     ...    ELSE IF    '${BROWSER}'=='chrome' and '${SERVER_IS_AWS}' == '0'    Open No Sandbox Chrome Browser    ${p_urlExt}    ${p_alias}
     ...    ELSE IF    '${BROWSER}'=='firefox'    Open Firefox Browser With Desired Capabilities    ${${g_BASE_URL}_BASE_URL}${p_urlExt}    ${p_alias}    ${p_remoteUrl}    ${p_desiredCapability}
     Run Keyword If    '${BROWSER}'=='chrome'    Get Chrome Test Environment Details
-    #Setup Browser Window Size
-    Maximize Browser Window
+    Setup Browser Window Size
+    # Maximize Browser Window
     Set Selenium Speed    .5
 
 Open Chrome Browser Using Create Webdriver
@@ -121,7 +121,8 @@ Get Chrome Test Environment Details
 #==============================#
 Setup Server
     ${hasEnvVar} =    Run Keyword And Return Status    Get Environment Variable    AWS_ENABLED
-    Run Keyword If    '${hasEnvVar}' == 'True'    Set Global Variable    ${SERVER_IS_AWS}    %{AWS_ENABLED}
+    Run Keyword If    '${hasEnvVar}' == 'True'    Set Global Variable    ${SERVER_IS_AWS}    1
+    # Run Keyword If    '${hasEnvVar}' == 'True'    Set Global Variable    ${SERVER_IS_AWS}    %{AWS_ENABLED}
 
 Setup Browser Window Size
     Set Window Size    ${DESKTOP_BROWSER_WIDTH}    ${DESKTOP_BROWSER_HEIGHT}

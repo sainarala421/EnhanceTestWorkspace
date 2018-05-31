@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation        [PRODUCT:MERCURY] This suite should test the availability of Mercury Home Page
-Default Tags         MercuryLoginTest    MERCURY    FUNCTIONALITY    HIGH
+# Default Tags         MercuryLoginTest    MERCURY    FUNCTIONALITY    HIGH
 Force Tags           REGRESSION
 Suite Setup          Launch Mercury Home Page
 Suite Teardown       Close All Browsers

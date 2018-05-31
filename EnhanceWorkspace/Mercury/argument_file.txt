@@ -6,6 +6,25 @@
 --variable MERCURY_GLOBAL_SETUP:../../../resources/common/mercury_global_setup.robot
 
 #==========================================================#
+#                  REPORT PORTAL
+#==========================================================#
+# --listener robotframework_reportportal.listener
+
+# --listener reportportal_listener
+# --escape quot:Q
+# --variable RP_UUID:b4559e80-e835-49ee-9879-9d6ff2c252f5
+# --variable RP_ENDPOINT:http://localhost:8080
+# --variable RP_LAUNCH:robot_test_execution_ng
+# --variable RP_PROJECT:DEFAULT_PERSONAL
+
+--listener reportportal_listener
+--escape quot:Q
+--variable RP_UUID:241d3dd3-7cdc-407f-97d3-703584bbbffc
+--variable RP_ENDPOINT:http://localhost:8081
+--variable RP_LAUNCH:robotlaunch
+--variable RP_PROJECT:ROBOTFRAMEWORK
+
+#==========================================================#
 #                  GLOBAL VARIABLES FOR TEST SUITES
 #==========================================================#
 
