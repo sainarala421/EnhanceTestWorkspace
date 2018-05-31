@@ -2,7 +2,7 @@ log.html
 output.xml
 report.html
 selenium-screenshot-*
-*/Results
+*/Results*
 .bash_history
 Vagrant-robotframeworktesting/.vagrant/
 VagrantAvailabilityTestResults/
@@ -22,4 +22,4 @@ pylint.out
 xunit.xml
 nosetests.xml
 geckodriver.log
-*.DS_Store
+*.DS_Store*
