@@ -23,9 +23,16 @@
                 echo 'stage 2'
             }
         }
-        stage ("stage3: Run robot tests") {
+        stage ("stage3") {
+            steps {
+                sh 'python --version'
+                sh 'pybot --version'
+            }
+        }
+        stage ("stage4: Run robot tests") {
             steps {
                 echo 'stage 3 robot start'
+                sh 'pybot --version'
                 sh 'pybot --argumentfile ../Mercury/argument_file.txt -i MERCURY -d Results .'
                 echo 'stage 3 robot end'
             }
