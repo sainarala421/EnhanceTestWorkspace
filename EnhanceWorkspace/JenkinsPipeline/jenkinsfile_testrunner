@@ -24,12 +24,22 @@
             }
         }
         stage ("stage3") {
+            agent {
+                label 'master'
+            }
             steps {
                 sh 'python --version'
                 sh 'pybot --version'
             }
         }
         stage ("stage4: Run robot tests") {
+            agent {
+                label 'master'
+            }
+            environment {
+                PATH        = "${PATH}:/usr/local/bin/chromedriver"
+                AWS_ENABLED = 0
+            }
             steps {
                 echo 'stage 3 robot start'
                 sh 'pybot --version'
