@@ -29,6 +29,7 @@
                 sh 'whoami'
                 sh 'sw_vers'
                 sh 'pwd'
+                sh 'ls -l'
             }
         }
         stage ("stage4 install requirements") {
