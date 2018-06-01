@@ -28,9 +28,15 @@
                 sh 'python --version'
                 sh 'whoami'
                 sh 'sw_vers'
+                sh 'isUnix'
             }
         }
-        stage ("stage4: Run robot tests") {
+        stage ("stage4") {
+            steps {
+                sh 'pip install -e .'
+            }
+        }
+        stage ("stage5: Run robot tests") {
             agent {
                 label 'master'
             }
@@ -44,6 +50,11 @@
                 sh 'pybot --argumentfile ../Mercury/argument_file.txt -i MERCURY -d Results .'
                 echo 'stage 3 robot end'
             }
+        }
+    }
+    post {
+        always {
+            echo "Send notifications for result: ${currentBuild.result}"
         }
     }
 
