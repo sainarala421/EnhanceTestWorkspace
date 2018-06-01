@@ -28,7 +28,7 @@
                 sh 'python --version'
                 sh 'whoami'
                 sh 'sw_vers'
-                sh 'isUnix'
+                isUnix
             }
         }
         stage ("stage4") {
