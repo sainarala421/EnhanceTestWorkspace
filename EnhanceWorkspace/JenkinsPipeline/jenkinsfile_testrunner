@@ -32,12 +32,18 @@
                 sh 'ls -l'
             }
         }
-        stage ("stage4 install requirements") {
+        stage ("stage5 Checkout repo") {
+            steps {
+                checkout scm
+                sh 'ls -l'
+            }
+        }
+        stage ("stage6 install requirements") {
             steps {
                 sh 'python ../Mercury/setup.py install'
             }
         }
-        stage ("stage5: Run robot tests") {
+        stage ("stage7: Run robot tests") {
             agent {
                 label 'master'
             }
