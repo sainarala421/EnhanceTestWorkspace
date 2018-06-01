@@ -21,6 +21,13 @@
                 echo "stage 2"
             }
         }
+        stage ("stage3") {
+            steps {
+                echo "stage 3 robot start"
+                pybot --argumentfile ../Mercury/argument_file.txt -i MERCURY -d Results .
+                echo "stage 3 robot end"
+            }
+        }
     }
 
  }
