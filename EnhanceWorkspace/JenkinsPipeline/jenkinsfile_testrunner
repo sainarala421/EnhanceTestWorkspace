@@ -9,7 +9,9 @@
  */
 
  pipeline {
-    agent any
+    agent {
+        label 'master'
+    }
     stages {
         stage ("stage1") {
             steps {
@@ -21,7 +23,7 @@
                 echo 'stage 2'
             }
         }
-        stage ("stage3") {
+        stage ("stage3: Run robot tests") {
             steps {
                 echo 'stage 3 robot start'
                 sh 'pybot --argumentfile ../Mercury/argument_file.txt -i MERCURY -d Results .'
