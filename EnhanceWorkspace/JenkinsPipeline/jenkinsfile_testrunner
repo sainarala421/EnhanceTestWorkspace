@@ -30,9 +30,9 @@
                 sh 'sw_vers'
             }
         }
-        stage ("stage4") {
+        stage ("stage4 install requirements") {
             steps {
-                sh 'pip install -e .'
+                sh 'python ../Mercury/setup.py install'
             }
         }
         stage ("stage5: Run robot tests") {
