@@ -24,12 +24,10 @@
             }
         }
         stage ("stage3") {
-            agent {
-                label 'master'
-            }
             steps {
                 sh 'python --version'
-                sh 'pybot --version'
+                sh 'whoami'
+                sh 'sw_vers'
             }
         }
         stage ("stage4: Run robot tests") {
