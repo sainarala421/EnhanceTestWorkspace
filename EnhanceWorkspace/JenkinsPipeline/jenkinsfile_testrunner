@@ -40,7 +40,7 @@
         }
         stage ("stage6 install requirements") {
             steps {
-                sh 'python ../Mercury/setup.py install'
+                sh 'python EnhanceWorkspace/Mercury/setup.py install'
             }
         }
         stage ("stage7: Run robot tests") {
@@ -54,7 +54,7 @@
             steps {
                 echo 'stage 3 robot start'
                 sh 'pybot --version'
-                sh 'pybot --argumentfile ../Mercury/argument_file.txt -i MERCURY -d Results .'
+                sh 'pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .'
                 echo 'stage 3 robot end'
             }
         }
