@@ -34,7 +34,7 @@
         }
         stage ("stage5 Checkout repo") {
             steps {
-                checkout scm
+                git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
             }
         }
