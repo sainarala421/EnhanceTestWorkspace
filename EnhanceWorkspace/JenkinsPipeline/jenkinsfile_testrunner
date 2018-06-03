@@ -34,8 +34,8 @@
         }
         stage ("stage5 Create Virtualenv") {
             steps {
-                virtualenv test_env
-                source test_env/bin/activate
+                sh 'virtualenv test_env'
+                sh 'source test_env/bin/activate'
             }
         }
         stage ("stage6 Checkout repo") {
