@@ -32,18 +32,24 @@
                 sh 'ls -l'
             }
         }
-        stage ("stage5 Checkout repo") {
+        stage ("stage5 Create Virtualenv") {
+            steps {
+                virtualenv test_env
+                source test_env/bin/activate
+            }
+        }
+        stage ("stage6 Checkout repo") {
             steps {
                 git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
             }
         }
-        stage ("stage6 install requirements") {
+        stage ("stage7 install requirements") {
             steps {
                 sh 'python EnhanceWorkspace/Mercury/setup.py install'
             }
         }
-        stage ("stage7: Run robot tests") {
+        stage ("stage8: Run robot tests") {
             agent {
                 label 'master'
             }
