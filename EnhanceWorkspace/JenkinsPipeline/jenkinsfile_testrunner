@@ -49,7 +49,7 @@
         }
         stage ("stage7 install requirements") {
             steps {
-                sh 'sudo python EnhanceWorkspace/Mercury/setup.py install'
+                sh 'python EnhanceWorkspace/Mercury/setup.py install'
             }
         }
         stage ("Stage 8: Run robot tests") {
