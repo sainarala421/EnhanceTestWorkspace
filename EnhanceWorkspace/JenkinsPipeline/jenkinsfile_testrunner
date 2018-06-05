@@ -12,18 +12,21 @@
     agent {
         label 'master'
     }
+    environment {
+        ADMIN_USER = credentials('admin-user')
+    }
     stages {
-        stage ("stage1") {
+        stage ("Stage 1") {
             steps {
                 echo 'stage 1'
             }
         }
-        stage ("stage2") {
+        stage ("Stage 2") {
             steps {
                 echo 'stage 2'
             }
         }
-        stage ("stage3") {
+        stage ("Stage 3") {
             steps {
                 sh 'python --version'
                 sh 'whoami'
@@ -32,13 +35,13 @@
                 sh 'ls -l'
             }
         }
-        stage ("stage5 Create Virtualenv") {
+        /* stage ("stage5 Create Virtualenv") {
             steps {
                 sh 'virtualenv test_env'
                 sh 'source test_env/bin/activate'
             }
-        }
-        stage ("stage6 Checkout repo") {
+        } */
+        stage ("Stage 6 Checkout repo") {
             steps {
                 git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
@@ -46,10 +49,10 @@
         }
         stage ("stage7 install requirements") {
             steps {
-                sh 'python EnhanceWorkspace/Mercury/setup.py install'
+                sh 'sudo python EnhanceWorkspace/Mercury/setup.py install'
             }
         }
-        stage ("stage8: Run robot tests") {
+        stage ("Stage 8: Run robot tests") {
             agent {
                 label 'master'
             }
@@ -58,16 +61,19 @@
                 AWS_ENABLED = 0
             }
             steps {
-                echo 'stage 3 robot start'
+                echo 'Stage 8 robot start'
                 sh 'pybot --version'
                 sh 'pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .'
-                echo 'stage 3 robot end'
+                echo 'Stage 8 robot end'
             }
         }
     }
     post {
         always {
             echo "Send notifications for result: ${currentBuild.result}"
+            mail to:"agundayfrancis@gmail.com",
+                subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
+                body: "RESULT: ${currentBuild.result}"  
         }
     }
 
