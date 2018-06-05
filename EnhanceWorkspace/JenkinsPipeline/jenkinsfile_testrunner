@@ -12,9 +12,9 @@
     agent {
         label 'master'
     }
-    environment {
+    /* environment {
         ADMIN_USER = credentials('admin-user')
-    }
+    } */
     stages {
         stage ("Stage 1") {
             steps {
