@@ -46,13 +46,13 @@
                 git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
             }
-        } */
+        } 
         stage ("Stage 7 install requirements") {
             steps {
                 sh 'ls -l'
                 sh 'python EnhanceWorkspace/Mercury/setup.py install'
             }
-        }
+        } */
         stage ("Stage 8: Run robot tests") {
             agent {
                 label 'master'
@@ -62,6 +62,8 @@
                 AWS_ENABLED = 0
             }
             steps {
+                sh 'ls -l'
+                sh 'pwd'
                 echo 'Stage 8 robot start'
                 sh 'pybot --version'
                 sh 'pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .'
