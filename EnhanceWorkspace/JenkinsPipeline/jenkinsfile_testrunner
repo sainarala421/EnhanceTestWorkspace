@@ -46,17 +46,14 @@
                 git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
             }
-        } 
+        } */
         stage ("Stage 7 install requirements") {
             steps {
                 sh 'ls -l'
-                sh 'python EnhanceWorkspace/Mercury/setup.py install'
+                sh 'pip install -e .'
             }
-        } */
+        }
         stage ("Stage 8: Run robot tests") {
-            agent {
-                label 'master'
-            }
             environment {
                 PATH        = "${PATH}:/usr/local/bin/chromedriver"
                 AWS_ENABLED = 0
