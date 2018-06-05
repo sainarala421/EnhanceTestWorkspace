@@ -41,14 +41,15 @@
                 sh 'source test_env/bin/activate'
             }
         } */
-        stage ("Stage 6 Checkout repo") {
+        /* stage ("Stage 6 Checkout repo") {
             steps {
                 git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
             }
-        }
-        stage ("stage7 install requirements") {
+        } */
+        stage ("Stage 7 install requirements") {
             steps {
+                sh 'ls -l'
                 sh 'python EnhanceWorkspace/Mercury/setup.py install'
             }
         }
