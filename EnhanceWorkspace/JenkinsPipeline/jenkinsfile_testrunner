@@ -63,7 +63,10 @@
                 sh 'pwd'
                 echo 'Stage 8 robot start'
                 sh 'pybot --version'
-                sh 'pybot --argumentfile Mercury/argument_file.txt -i MERCURY -d Results .'
+                sh 'cd Mercury'
+                sh 'pwd'
+                sh 'ls -l'
+                sh 'pybot --argumentfile argument_file.txt -i MERCURY .'
                 echo 'Stage 8 robot end'
 
             }
