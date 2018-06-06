@@ -65,6 +65,7 @@
                 sh 'pybot --version'
                 sh 'pybot --argumentfile Mercury/argument_file.txt -i MERCURY -d Results .'
                 echo 'Stage 8 robot end'
+
             }
         }
     }
@@ -73,7 +74,14 @@
             echo "Send notifications for result: ${currentBuild.result}"
             mail to:"agundayfrancis@gmail.com",
                 subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
-                body: "RESULT: ${currentBuild.result}"  
+                body: "RESULT: ${currentBuild.result}"
+            step([
+              $class: 'RobotPublisher',
+              outputPath: '.',
+              passThreshold: 0,
+              unstableThreshold: 0,
+              otherFiles: "**/*.png"
+            ]) 
         }
     }
 
