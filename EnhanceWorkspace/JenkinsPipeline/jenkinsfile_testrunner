@@ -63,7 +63,7 @@
                 sh 'pwd'
                 echo 'Stage 8 robot start'
                 sh 'pybot --version'
-                sh 'pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .'
+                sh 'pybot --argumentfile Mercury/argument_file.txt -i MERCURY -d Results .'
                 echo 'Stage 8 robot end'
             }
         }
