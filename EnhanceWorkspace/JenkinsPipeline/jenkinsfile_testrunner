@@ -65,26 +65,42 @@
                     ls -l
                     pwd
                     pybot --version
-                    pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .
+                    pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MercuryAboutPageAvailabilityTest -d Results .
                 '''
+                script {
+                        step([
+                            $class: 'RobotPublisher',
+                            outputPath: '.',
+                            passThreshold: 0,
+                            unstableThreshold: 0,
+                            otherFiles: "**/*.png"
+                        ])
+                }
             }
         }
     }
     post {
         always {
             echo "Send notifications for result: ${currentBuild.result}"
-
-            step([
-              $class: 'RobotPublisher',
-              outputPath: '.',
-              passThreshold: 0,
-              unstableThreshold: 0,
-              otherFiles: "**/*.png"
-            ])
-
             mail to:"agundayfrancis@gmail.com",
                 subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
-                body: "RESULT: ${currentBuild.result}"  
+                body: "RESULT: ${currentBuild.result}"
+            script{
+                try{
+                    echo "Send notifications for result: ${currentBuild.result}"
+                    echo "Test Passed"
+                    } catch(e) {
+                        step([
+                          $class: 'RobotPublisher',
+                          outputPath: '.',
+                          passThreshold: 0,
+                          unstableThreshold: 0,
+                          otherFiles: "**/*.png"
+                        ])
+                        throw e
+                    }
+
+            }
         }
     }
 
