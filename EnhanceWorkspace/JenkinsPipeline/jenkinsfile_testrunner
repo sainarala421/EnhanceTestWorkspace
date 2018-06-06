@@ -65,7 +65,6 @@
                     ls -l
                     pwd
                     pybot --version
-                    cd EnhanceWorkspace/Mercury
                     pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .
                 '''
             }
