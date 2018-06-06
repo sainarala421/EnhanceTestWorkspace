@@ -28,11 +28,13 @@
         }
         stage ("Stage 3") {
             steps {
-                sh 'python --version'
-                sh 'whoami'
-                sh 'sw_vers'
-                sh 'pwd'
-                sh 'ls -l'
+                sh '''#!/bin/bash
+                    python --version
+                    whoami
+                    sw_vers
+                    pwd
+                    ls -l
+                '''
             }
         }
         /* stage ("stage5 Create Virtualenv") {
@@ -46,8 +48,8 @@
                 git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
                 sh 'ls -l'
             }
-        } */
-        /* stage ("Stage 7 install requirements") {
+        } 
+        stage ("Stage 7 install requirements") {
             steps {
                 sh 'ls -l'
                 sh 'sudo pip install -e .'
@@ -59,32 +61,32 @@
                 AWS_ENABLED = 0
             }
             steps {
-                sh 'ls -l'
-                sh 'pwd'
-                echo 'Stage 8 robot start'
-                // sh 'pybot --version'
-                sh 'cd EnhanceWorkspace/Mercury'
-                sh 'pwd'
-                sh 'ls -l'
-                sh 'pybot --argumentfile argument_file.txt -i MERCURY .'
-                echo 'Stage 8 robot end'
-
+                sh '''#!/bin/bash
+                    ls -l
+                    pwd
+                    pybot --version
+                    cd EnhanceWorkspace/Mercury
+                    pip install -e .
+                    pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MERCURY -d Results .
+                '''
             }
         }
     }
     post {
         always {
             echo "Send notifications for result: ${currentBuild.result}"
-            mail to:"agundayfrancis@gmail.com",
-                subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
-                body: "RESULT: ${currentBuild.result}"
+
             step([
               $class: 'RobotPublisher',
               outputPath: '.',
               passThreshold: 0,
               unstableThreshold: 0,
               otherFiles: "**/*.png"
-            ]) 
+            ])
+
+            mail to:"agundayfrancis@gmail.com",
+                subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
+                body: "RESULT: ${currentBuild.result}"  
         }
     }
 
