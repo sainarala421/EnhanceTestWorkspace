@@ -47,12 +47,12 @@
                 sh 'ls -l'
             }
         } */
-        stage ("Stage 7 install requirements") {
+        /* stage ("Stage 7 install requirements") {
             steps {
                 sh 'ls -l'
                 sh 'sudo pip install -e .'
             }
-        }
+        } */
         stage ("Stage 8: Run robot tests") {
             environment {
                 PATH        = "${PATH}:/usr/local/bin/chromedriver"
