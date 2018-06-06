@@ -62,7 +62,7 @@
                 sh 'ls -l'
                 sh 'pwd'
                 echo 'Stage 8 robot start'
-                sh 'pybot --version'
+                // sh 'pybot --version'
                 sh 'cd Mercury'
                 sh 'pwd'
                 sh 'ls -l'
