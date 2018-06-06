@@ -16,17 +16,7 @@
         ADMIN_USER = credentials('admin-user')
     } */
     stages {
-        stage ("Stage 1") {
-            steps {
-                echo 'stage 1'
-            }
-        }
-        stage ("Stage 2") {
-            steps {
-                echo 'stage 2'
-            }
-        }
-        stage ("Stage 3") {
+        stage ("Stage 1: Get Agent details") {
             steps {
                 sh '''#!/bin/bash
                     python --version
@@ -37,25 +27,7 @@
                 '''
             }
         }
-        /* stage ("stage5 Create Virtualenv") {
-            steps {
-                sh 'virtualenv test_env'
-                sh 'source test_env/bin/activate'
-            }
-        } */
-        /* stage ("Stage 6 Checkout repo") {
-            steps {
-                git 'https://github.com/enhanceTAfrancis/EnhanceTestWorkspace.git'
-                sh 'ls -l'
-            }
-        } 
-        stage ("Stage 7 install requirements") {
-            steps {
-                sh 'ls -l'
-                sh 'sudo pip install -e .'
-            }
-        } */
-        stage ("Stage 8: Run robot tests") {
+        stage ("Stage 2: Run robot tests") {
             environment {
                 PATH        = "${PATH}:/usr/local/bin/chromedriver"
                 AWS_ENABLED = 0
@@ -67,30 +39,20 @@
                     pybot --version
                     pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MercuryAboutPageAvailabilityTest .
                 '''
-                //script {
-                step([
-                    $class: 'RobotPublisher',
-                    outputPath: '.',
-                    passThreshold: 0,
-                    unstableThreshold: 0,
-                    otherFiles: "**/*.png"
-                ]) 
-                //} 
-                
             }
         }
     }
     post {
         always {
-            echo "Send notifications for result: ${currentBuild.result}"
-            mail to:"agundayfrancis@gmail.com",
+            /* mail to:"agundayfrancis@gmail.com",
                 subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
-                body: "RESULT: ${currentBuild.result}"
+                body: "RESULT: ${currentBuild.result}" */
             script{
                 try{
                     echo "Send notifications for result: ${currentBuild.result}"
-                    echo "Test Passed"
+
                     } catch(e) {
+                        echo "Send notifications for result: ${currentBuild.result}"
                         step([
                           $class: 'RobotPublisher',
                           outputPath: '.',
