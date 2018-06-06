@@ -43,13 +43,18 @@
         }
         stage ('Analysis') {
             steps {
+                def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
+                withSonarQubeEnv('Local SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                } 
+                /*
                 script {
                     timeout(time:5, unit:'MINUTES') {
                         def qg = waitForQualityGate();
                         if (qg.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
                         }
-                    }
+                    } 
 
                     def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
                     withSonarQubeEnv('Local SonarQube') {
