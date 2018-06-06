@@ -65,7 +65,7 @@
                     ls -l
                     pwd
                     pybot --version
-                    pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MercuryAboutPageAvailabilityTest -d Results .
+                    pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MercuryAboutPageAvailabilityTest .
                 '''
                 //script {
                 step([
