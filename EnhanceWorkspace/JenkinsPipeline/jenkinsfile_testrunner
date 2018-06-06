@@ -67,15 +67,16 @@
                     pybot --version
                     pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MercuryAboutPageAvailabilityTest -d Results .
                 '''
-                script {
-                        step([
-                            $class: 'RobotPublisher',
-                            outputPath: '.',
-                            passThreshold: 0,
-                            unstableThreshold: 0,
-                            otherFiles: "**/*.png"
-                        ])
-                }
+                //script {
+                step([
+                    $class: 'RobotPublisher',
+                    outputPath: '.',
+                    passThreshold: 0,
+                    unstableThreshold: 0,
+                    otherFiles: "**/*.png"
+                ]) 
+                //} 
+                
             }
         }
     }
