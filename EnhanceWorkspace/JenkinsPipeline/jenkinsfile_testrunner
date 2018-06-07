@@ -46,7 +46,7 @@
                 // def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
                 script {
                   // requires SonarQube Scanner 2.8+
-                  scannerHome = tool 'SonarQube Scanner 2.8'
+                  scannerHome = tool 'sq-scanner'
                 }
                 withSonarQubeEnv('Local SonarQube') {
                     sh "${scannerHome}/sonar-scanner"
