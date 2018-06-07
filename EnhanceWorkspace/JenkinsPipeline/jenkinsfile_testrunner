@@ -51,6 +51,9 @@
                     sh '''#!/bin/bash
                         ls -l
                         pwd
+                        cd EnhanceWorkspace
+                        ls -l
+                        pwd
                         ${scannerHome}/sonar-scanner
                     '''
                 } 
