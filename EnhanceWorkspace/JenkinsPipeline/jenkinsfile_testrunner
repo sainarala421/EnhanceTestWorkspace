@@ -15,6 +15,18 @@
     /* environment {
         ADMIN_USER = credentials('admin-user')
     } */
+    environment {
+        script {
+            sonar.host.url=http://localhost:9000/sonar
+            sonar.projectKey=JenkinsPipelineToken
+            sonar.projectName=Robotframework
+            sonar.projectVersion=1.0
+            sonar.sources=.
+            sonar.language=py
+            sonar.sourceEncoding=UTF-8
+        }
+
+    }
     stages {
         stage ("Stage 1: Get Agent details") {
             steps {
@@ -41,7 +53,7 @@
                 '''
             }
         }
-        stage ('Analysis') {
+        stage ('Stage 3: Analysis') {
             steps {
                 // def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
                 script {
@@ -59,25 +71,6 @@
                         }
                     }
                 }
-                /*
-                script {
-                    timeout(time:5, unit:'MINUTES') {
-                        def qg = waitForQualityGate();
-                        if (qg.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                        }
-                    } 
-
-                    def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
-                    withSonarQubeEnv('Local SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    } 
-                    /*
-                    def scannerHome = tool 'SonarQube Scanner 2.8';
-                    withSonarQubeEnv('My SonarQube Server') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    } 
-                }*/
             }
         }
     }
