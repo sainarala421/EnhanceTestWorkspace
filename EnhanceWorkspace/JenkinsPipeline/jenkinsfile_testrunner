@@ -54,8 +54,9 @@
                         cd EnhanceWorkspace
                         ls -l
                         pwd
-                        ${scannerHome}/sonar-scanner
+                        /usr/local/bin/sonar-scanner
                     '''
+                    // ${scannerHome}/sonar-scanner
                 } 
                 timeout(time:5, unit:'MINUTES') {
                     script {
