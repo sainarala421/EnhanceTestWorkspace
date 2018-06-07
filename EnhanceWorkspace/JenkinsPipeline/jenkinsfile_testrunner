@@ -53,6 +53,7 @@
                 withSonarQubeEnv('Local SonarQube') {
                     // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
                     sh '''#!/bin/bash
+                        cd EnhanceWorkspace
                         $SONAR_SCANNER_PATH/sonar-scanner
                     '''
                 } 
