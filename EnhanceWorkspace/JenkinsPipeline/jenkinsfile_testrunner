@@ -45,7 +45,7 @@
             steps {
                 // def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
                 withSonarQubeEnv('Local SonarQube') {
-                    sh "/etc/sonar-scanner-3.2.0.1227-macosx/bin/sonar-scanner"
+                    sh "{tool 'sq-scanner'}/usr/local/bin/sonar-scanner"
                 } 
                 /*
                 script {
