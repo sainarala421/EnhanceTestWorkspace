@@ -42,19 +42,15 @@
         }
         stage ('Stage 3: Analysis') {
             steps {
-                // def scannerLoc = tool '/etc/sonar-scanner-3.2.0.1227-macosx';
-                script {
-                  // requires SonarQube Scanner 2.8+
-                  scannerHome = tool 'sq-scanner'
-                }
                 withSonarQubeEnv('Local SonarQube') {
+                    // sq-scanner value is set in Jenkins > Global Tool Configuration
                     sh '''#!/bin/bash
                         ls -l
                         pwd
                         cd EnhanceWorkspace
                         ls -l
                         pwd
-                        /usr/local/bin/sonar-scanner
+                        ${sq-scanner}/sonar-scanner
                     '''
                     // ${scannerHome}/sonar-scanner
                 } 
