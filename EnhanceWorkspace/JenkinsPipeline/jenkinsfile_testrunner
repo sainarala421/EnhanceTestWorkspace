@@ -55,7 +55,7 @@
                         ls -l
                         pwd
                         echo ${sq-scanner}
-                        $sonarscannerPath/sonar-scanner
+                        $(params.sonarscannerPath)/sonar-scanner
                     '''
                     // ${scannerHome}/sonar-scanner
                 } 
