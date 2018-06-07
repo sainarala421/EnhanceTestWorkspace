@@ -54,7 +54,7 @@
                         cd EnhanceWorkspace
                         ls -l
                         pwd
-                        echo $sq-scanner
+                        echo $SQ_SCANNER
                         echo $sonarscannerPath
                         $sonarscannerPath/sonar-scanner
                     '''
