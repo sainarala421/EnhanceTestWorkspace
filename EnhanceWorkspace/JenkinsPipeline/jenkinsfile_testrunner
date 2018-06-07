@@ -13,14 +13,20 @@
         label 'master'
     }
     parameters {
-       string (name: 'sonarscannerPath', defaultValue: '/usr/local/bin',
+       string (name: 'SONAR_SCANNER_PATH', defaultValue: '/usr/local/bin',
               description: 'sonar-scanner path on agent')
+       string (name: 'WEB_BROWSER', defaultValue: 'chrome',
+              description: 'Browser to run tests')
+       string (name: 'BASE_URL', defaultValue: 'https://www.mercury.co.nz',
+              description: 'Production URI')
+       string (name: 'TEST_SUITE', defaultValue: 'MercuryAboutPageAvailabilityTest',
+              description: 'Default test suite')
     }
     /* environment {
         ADMIN_USER = credentials('admin-user')
     } */
     stages {
-        stage ("Stage 1: Get Agent details") {
+        stage ("Stage 1: Get agent details") {
             steps {
                 sh '''#!/bin/bash
                     python --version
@@ -31,35 +37,8 @@
                 '''
             }
         }
-        stage ("Stage 2: Run robot tests") {
-            environment {
-                PATH        = "${PATH}:/usr/local/bin/chromedriver"
-                AWS_ENABLED = 0
-            }
+        stage ('Stage 2: Code analysis.') {
             steps {
-                sh '''#!/bin/bash
-                    ls -l
-                    pwd
-                '''
-                //pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -i MercuryAboutPageAvailabilityTest .
-            }
-        }
-        stage ('Stage 3: Analysis') {
-            steps {
-                withSonarQubeEnv('Local SonarQube') {
-                    // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
-                    sh '''#!/bin/bash
-                        ls -l
-                        pwd
-                        cd EnhanceWorkspace
-                        ls -l
-                        pwd
-                        echo $SQ_SCANNER
-                        echo $sonarscannerPath
-                        $sonarscannerPath/sonar-scanner
-                    '''
-                    // ${scannerHome}/sonar-scanner
-                } 
                 timeout(time:5, unit:'MINUTES') {
                     script {
                         def qg = waitForQualityGate()
@@ -68,8 +47,28 @@
                         }
                     }
                 }
+                withSonarQubeEnv('Local SonarQube') {
+                    // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
+                    sh '''#!/bin/bash
+                        $SONAR_SCANNER_PATH/sonar-scanner
+                    '''
+                } 
             }
         }
+        stage ("Stage 3: Run robotframework tests.") {
+            environment {
+                PATH        = "${PATH}:/usr/local/bin/chromedriver"
+                AWS_ENABLED = 0
+            }
+            steps {
+                sh '''#!/bin/bash
+                    ls -l
+                    pwd
+                    pybot --argumentfile EnhanceWorkspace/Mercury/argument_file.txt -v BROWSER:$WEB_BROWSER -v BASE_URL:$BASE_URL -i $TEST_SUITE .
+                '''
+            }
+        }
+
     }
     post {
         always {
