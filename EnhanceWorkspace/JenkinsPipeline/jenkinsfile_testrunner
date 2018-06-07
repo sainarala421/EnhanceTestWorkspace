@@ -41,16 +41,21 @@
             }
         }
         stage ('Stage 3: Analysis') {
+            parameters {
+               string(name: 'sonarscannerPath', defaultValue: '/usr/local/bin',
+                      description: 'sonar-scanner path on agent')
+            }
             steps {
                 withSonarQubeEnv('Local SonarQube') {
-                    // sq-scanner value is set in Jenkins > Global Tool Configuration
+                    // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
                     sh '''#!/bin/bash
                         ls -l
                         pwd
                         cd EnhanceWorkspace
                         ls -l
                         pwd
-                        ${sq-scanner}/sonar-scanner
+                        echo ${sq-scanner}
+                        $sonarscannerPath/sonar-scanner
                     '''
                     // ${scannerHome}/sonar-scanner
                 } 
