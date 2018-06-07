@@ -41,11 +41,11 @@
             }
         }
         stage ('Stage 3: Analysis') {
-            parameters {
-               string(name: 'sonarscannerPath', defaultValue: '/usr/local/bin',
-                      description: 'sonar-scanner path on agent')
-            }
             steps {
+                parameters {
+                   string(name: 'sonarscannerPath', defaultValue: '/usr/local/bin',
+                          description: 'sonar-scanner path on agent')
+                }
                 withSonarQubeEnv('Local SonarQube') {
                     // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
                     sh '''#!/bin/bash
