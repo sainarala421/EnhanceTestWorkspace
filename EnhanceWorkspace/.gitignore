@@ -27,4 +27,6 @@ geckodriver.log
 
 /target
 /Screenshots
-.classpath
+.classpath*
+.metadata*
+.metadata/.*

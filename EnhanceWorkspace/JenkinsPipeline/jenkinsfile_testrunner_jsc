@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-#!/usr/bin/env groovy
 /*
  * This Jenkinsfile is intended to run on https://ci.jenkins.io and may fail anywhere else.
  * It makes assumptions about plugins being installed, labels mapping to nodes that can build what is needed, etc.
@@ -16,15 +15,6 @@
     parameters {
        string (name: 'SONAR_SCANNER_PATH', defaultValue: '/usr/local/bin',
               description: 'sonar-scanner path on agent')
-
-       string (name: 'WEB_BROWSER', defaultValue: 'chrome',
-              description: 'Browser to run tests')
-
-       string (name: 'BASE_URL', defaultValue: 'https://www.mercury.co.nz',
-              description: 'Production URI')
-
-       string (name: 'TEST_SUITE', defaultValue: 'MercuryAboutPageAvailabilityTest',
-              description: 'Default test suite')
     }
     /* environment {
         ADMIN_USER = credentials('admin-user')
