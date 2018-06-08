@@ -44,20 +44,19 @@ public class Hooks{
 //            byte[] screenshot = getScreenshotAs(OutputType.BYTES);
             byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png");
+            
+            // Gather logs on failed tests
+            LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
+            for (LogEntry entry : logEntries) {
+                System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+                //do something useful with the data
+            }
+            
         } catch (WebDriverException somePlatformsDontSupportScreenshots) {
             System.err.println(somePlatformsDontSupportScreenshots.getMessage());
         }
         
         }
         driver.quit();
-        
     }
-    public void analyzeLog() {
-        LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
-        for (LogEntry entry : logEntries) {
-            System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
-            //do something useful with the data
-        }
-    }
-    
 }
