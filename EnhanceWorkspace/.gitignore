@@ -28,5 +28,7 @@ geckodriver.log
 /target
 /Screenshots
 .classpath*
+.metadata/.plugins/*
 *.metadata*
 *.metadata/.*
+/.recommenders/

@@ -43,6 +43,7 @@
                 '''
             }
         }
+        /*
         stage ('Stage 3: Code analysis.') {
             steps {
                 withSonarQubeEnv('Local SonarQube') {
@@ -61,7 +62,7 @@
                     }
                 }
             }
-        }
+        }*/
     }
     post {
         always {
