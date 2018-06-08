@@ -1,0 +1,106 @@
+
+!ENTRY org.eclipse.mylyn.tasks.core 2 0 2018-06-08 16:20:04.252
+!MESSAGE Save failed for Task List
+!STACK 1
+org.eclipse.core.runtime.CoreException: Saving Task List failed
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizer.writeTaskList(TaskListExternalizer.java:74)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant$2.execute(TaskListExternalizationParticipant.java:129)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:729)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:720)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant.save(TaskListExternalizationParticipant.java:133)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.AbstractExternalizationParticipant.execute(AbstractExternalizationParticipant.java:70)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.ExternalizationManager$ExternalizationJob.run(ExternalizationManager.java:222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+Caused by: java.io.FileNotFoundException: /Users/jarvis2/Documents/EnhanceTestWorkspace/EnhanceWorkspace/selenium-cucumber-java-maven-example/.metadata/.mylyn/tasks.xml.zip (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizer.writeTaskList(TaskListExternalizer.java:59)
+	... 7 more
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2018-06-08 16:20:04.253
+!MESSAGE Saving Task List failed
+!STACK 0
+java.io.FileNotFoundException: /Users/jarvis2/Documents/EnhanceTestWorkspace/EnhanceWorkspace/selenium-cucumber-java-maven-example/.metadata/.mylyn/tasks.xml.zip (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizer.writeTaskList(TaskListExternalizer.java:59)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant$2.execute(TaskListExternalizationParticipant.java:129)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:729)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:720)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant.save(TaskListExternalizationParticipant.java:133)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.AbstractExternalizationParticipant.execute(AbstractExternalizationParticipant.java:70)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.ExternalizationManager$ExternalizationJob.run(ExternalizationManager.java:222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-06-08 16:21:02.521
+!MESSAGE The POM for com.github.selenium-cucumber:selenium-cucumber-java:jar:1.0.1-beta is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2018-06-08 16:21:02.833
+!MESSAGE Unable to add sc-java-testing/sc-java-testing/0.0.1-SNAPSHOT/sc-java-testing-0.0.1-SNAPSHOT.pom
+!STACK 0
+java.io.FileNotFoundException: /Users/jarvis2/Documents/EnhanceTestWorkspace/EnhanceWorkspace/selenium-cucumber-java-maven-example/.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_1.fdt (No such file or directory)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:316)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:243)
+	at org.apache.lucene.store.FSDirectory$FSIndexOutput.<init>(FSDirectory.java:639)
+	at org.apache.lucene.store.FSDirectory.createOutput(FSDirectory.java:442)
+	at org.apache.lucene.index.FieldsWriter.<init>(FieldsWriter.java:62)
+	at org.apache.lucene.index.StoredFieldsWriter.initFieldsWriter(StoredFieldsWriter.java:65)
+	at org.apache.lucene.index.StoredFieldsWriter.finishDocument(StoredFieldsWriter.java:141)
+	at org.apache.lucene.index.StoredFieldsWriter$PerDoc.finish(StoredFieldsWriter.java:187)
+	at org.apache.lucene.index.DocumentsWriter$WaitQueue.writeDocument(DocumentsWriter.java:1408)
+	at org.apache.lucene.index.DocumentsWriter$WaitQueue.add(DocumentsWriter.java:1427)
+	at org.apache.lucene.index.DocumentsWriter.finishDocument(DocumentsWriter.java:1062)
+	at org.apache.lucene.index.DocumentsWriter.updateDocument(DocumentsWriter.java:768)
+	at org.apache.lucene.index.DocumentsWriter.updateDocument(DocumentsWriter.java:748)
+	at org.apache.lucene.index.IndexWriter.updateDocument(IndexWriter.java:2047)
+	at org.apache.lucene.index.IndexWriter.updateDocument(IndexWriter.java:2024)
+	at org.apache.maven.index.DefaultIndexerEngine.update(DefaultIndexerEngine.java:80)
+	at org.apache.maven.index.DefaultNexusIndexer.addArtifactToIndex(DefaultNexusIndexer.java:338)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.addDocument(NexusIndexManager.java:580)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.mavenProjectChanged(NexusIndexManager.java:766)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:783)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:930)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:300)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.configureNewMavenProjects(ProjectConfigurationManager.java:259)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager$1.call(ProjectConfigurationManager.java:175)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager$1.call(ProjectConfigurationManager.java:1)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:177)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:151)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:99)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1355)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.importProjects(ProjectConfigurationManager.java:143)
+	at org.eclipse.m2e.core.ui.internal.wizards.ImportMavenProjectsJob$1.doCreateMavenProjects(ImportMavenProjectsJob.java:68)
+	at org.eclipse.m2e.core.ui.internal.wizards.AbstractCreateMavenProjectsOperation.run(AbstractCreateMavenProjectsOperation.java:73)
+	at org.eclipse.m2e.core.ui.internal.wizards.ImportMavenProjectsJob.runInWorkspace(ImportMavenProjectsJob.java:77)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.core.resources 4 566 2018-06-08 16:21:03.885
+!MESSAGE Could not save master table to file '/Users/jarvis2/Documents/EnhanceTestWorkspace/EnhanceWorkspace/selenium-cucumber-java-maven-example/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: /Users/jarvis2/Documents/EnhanceTestWorkspace/EnhanceWorkspace/selenium-cucumber-java-maven-example/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:133)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1286)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1277)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1254)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1165)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-06-08 16:21:05.961
+!MESSAGE The POM for com.github.selenium-cucumber:selenium-cucumber-java:jar:1.0.1-beta is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-06-08 16:21:06.087
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-06-08 16:21:06.090
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!

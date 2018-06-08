@@ -24,3 +24,7 @@ nosetests.xml
 geckodriver.log
 *.DS_Store*
 .scannerwork*
+
+/target
+/Screenshots
+.classpath

@@ -1,0 +1,49 @@
+2018-06-08 16:21:02,078 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: sc-java-testing:sc-java-testing:0.0.1-SNAPSHOT @ /Users/jarvis2/JavaSeleniumCucumber/selenium-cucumber-java-maven-example/pom.xml.
+2018-06-08 16:21:02,519 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.github.selenium-cucumber:selenium-cucumber-java:jar:1.0.1-beta is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-06-08 16:21:02,832 [Worker-9] ERROR o.e.m.c.i.i.nexus.NexusIndexManager - Unable to add sc-java-testing/sc-java-testing/0.0.1-SNAPSHOT/sc-java-testing-0.0.1-SNAPSHOT.pom
+java.io.FileNotFoundException: /Users/jarvis2/Documents/EnhanceTestWorkspace/EnhanceWorkspace/selenium-cucumber-java-maven-example/.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_1.fdt (No such file or directory)
+	at java.io.RandomAccessFile.open0(Native Method) ~[na:1.8.0_162]
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:316) ~[na:1.8.0_162]
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:243) ~[na:1.8.0_162]
+	at org.apache.lucene.store.FSDirectory$FSIndexOutput.<init>(FSDirectory.java:639) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.store.FSDirectory.createOutput(FSDirectory.java:442) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.FieldsWriter.<init>(FieldsWriter.java:62) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.StoredFieldsWriter.initFieldsWriter(StoredFieldsWriter.java:65) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.StoredFieldsWriter.finishDocument(StoredFieldsWriter.java:141) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.StoredFieldsWriter$PerDoc.finish(StoredFieldsWriter.java:187) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.DocumentsWriter$WaitQueue.writeDocument(DocumentsWriter.java:1408) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.DocumentsWriter$WaitQueue.add(DocumentsWriter.java:1427) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.DocumentsWriter.finishDocument(DocumentsWriter.java:1062) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.DocumentsWriter.updateDocument(DocumentsWriter.java:768) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.DocumentsWriter.updateDocument(DocumentsWriter.java:748) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.IndexWriter.updateDocument(IndexWriter.java:2047) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.lucene.index.IndexWriter.updateDocument(IndexWriter.java:2024) ~[lucene-core-2.4.1.jar:2.4.1 750176 - 2009-03-04 21:56:52]
+	at org.apache.maven.index.DefaultIndexerEngine.update(DefaultIndexerEngine.java:80) ~[org.eclipse.m2e.maven.indexer_1.8.3.20180227-2135/:na]
+	at org.apache.maven.index.DefaultNexusIndexer.addArtifactToIndex(DefaultNexusIndexer.java:338) ~[org.eclipse.m2e.maven.indexer_1.8.3.20180227-2135/:na]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.addDocument(NexusIndexManager.java:580) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.mavenProjectChanged(NexusIndexManager.java:766) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:783) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:930) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:300) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.configureNewMavenProjects(ProjectConfigurationManager.java:259) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager$1.call(ProjectConfigurationManager.java:175) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager$1.call(ProjectConfigurationManager.java:1) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:177) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:151) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:99) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1355) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.importProjects(ProjectConfigurationManager.java:143) [org.eclipse.m2e.core_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.ui.internal.wizards.ImportMavenProjectsJob$1.doCreateMavenProjects(ImportMavenProjectsJob.java:68) [org.eclipse.m2e.core.ui_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.ui.internal.wizards.AbstractCreateMavenProjectsOperation.run(AbstractCreateMavenProjectsOperation.java:73) [org.eclipse.m2e.core.ui_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.m2e.core.ui.internal.wizards.ImportMavenProjectsJob.runInWorkspace(ImportMavenProjectsJob.java:77) [org.eclipse.m2e.core.ui_1.8.3.20180227-2137.jar:na]
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39) [org.eclipse.core.resources_3.12.0.v20170417-1558.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56) [org.eclipse.core.jobs_3.9.3.v20180115-1757.jar:na]
+2018-06-08 16:21:03,330 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /sc-java-testing/src/main/java
+2018-06-08 16:21:03,332 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /sc-java-testing/src/test/java
+2018-06-08 16:21:03,332 [Worker-9] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /sc-java-testing/src/test/resources
+2018-06-08 16:21:03,523 [Worker-9] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 3 sec
+2018-06-08 16:21:05,958 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.github.selenium-cucumber:selenium-cucumber-java:jar:1.0.1-beta is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-06-08 16:21:06,087 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-06-08 16:21:06,087 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jarvis2/JavaSeleniumCucumber/selenium-cucumber-java-maven-example/src/main/resources
+2018-06-08 16:21:06,090 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-06-08 16:21:06,099 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
