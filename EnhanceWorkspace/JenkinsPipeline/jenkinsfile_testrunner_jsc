@@ -31,7 +31,16 @@
                 '''
             }
         }
-        stage ('Stage 2: Code analysis.') {
+        stage ("Stage 2: Get agent details") {
+            steps {
+                sh '''#!/bin/bash
+                    cd EnhanceWorkspace/selenium-cucumber-java-maven-example
+                    mvn clean
+                    mvn test
+                '''
+            }
+        }
+        stage ('Stage 3: Code analysis.') {
             steps {
                 withSonarQubeEnv('Local SonarQube') {
                     // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
