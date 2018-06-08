@@ -47,3 +47,4 @@ java.io.FileNotFoundException: /Users/jarvis2/Documents/EnhanceTestWorkspace/Enh
 2018-06-08 16:21:06,087 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/jarvis2/JavaSeleniumCucumber/selenium-cucumber-java-maven-example/src/main/resources
 2018-06-08 16:21:06,090 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2018-06-08 16:21:06,099 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2018-06-08 16:28:30,351 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
