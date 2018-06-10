@@ -12,7 +12,6 @@ public class LoginPage extends BaseClass{
 	public LoginPage(WebDriver driver){
 		super(driver);
 	}    
-
 	
 	@FindBy(how=How.ID, using="email")
 	public static WebElement email;
@@ -30,28 +29,4 @@ public class LoginPage extends BaseClass{
 	@FindBy(how=How.ID, using="SubmitCreate")
 	public static WebElement submit_create;
 	
-	
-		
 	}
-		
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

@@ -1,30 +1,22 @@
 package step_definitions;
 
-import cucumber.api.PendingException;
 import helpers.DataHelper;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import modules.ContactUsAction;
 import modules.SignInAction;
 import modules.SignoutAction;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import pageobjects.AutomationHomePage;
 import pageobjects.ContactusPage;
 import pageobjects.LoginPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 public class SigninSignoutContactUsSteps {
     public WebDriver driver;
     public List<HashMap<String,String>> datamap;
-    
     
     public SigninSignoutContactUsSteps()
     {

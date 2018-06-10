@@ -1,4 +1,4 @@
-package pageObjects;
+package SkyTV.pageObjects;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BaseClass

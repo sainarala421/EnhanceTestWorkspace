@@ -1,29 +1,22 @@
 package stepDefinitions;
 
 import helpers.DataHelper;
-
 import java.util.HashMap;
 import java.util.List;
-
 import modules.ContactUsAction;
 import modules.SigninAction;
 import modules.SignoutAction;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import pageObjects.AutomationHomePage;
 import pageObjects.ContactUsPage;
 import pageObjects.LoginPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 public class SigninSignoutContactUsSteps {
     public WebDriver driver;
     public List<HashMap<String,String>> datamap;
-    
-    
     public SigninSignoutContactUsSteps()
     {
     	driver = Hooks.driver;

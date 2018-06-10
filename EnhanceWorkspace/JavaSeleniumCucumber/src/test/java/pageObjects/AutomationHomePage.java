@@ -18,8 +18,7 @@ public class AutomationHomePage extends BaseClass{
 	@FindBy(how=How.LINK_TEXT, using="Sign out")
 	public static WebElement sign_out;
 		
-	public static class HeaderPage 
-	{
+	public static class HeaderPage{
 		@FindBy(how=How.LINK_TEXT, using="Women")
 		public static WebElement menu_women;
 		
@@ -36,7 +35,6 @@ public class AutomationHomePage extends BaseClass{
 
 			public static class DressesPage
 			{
-
 				@FindBy(how=How.LINK_TEXT,using="Summer Dresses")
 				public static WebElement summer_dresses;
 			}
