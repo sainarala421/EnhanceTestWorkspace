@@ -17,8 +17,4 @@ public class OrderConfirmationPage extends BaseClass{
 	
 	@FindBy(how=How.CLASS_NAME, using="alert-success")
 	public static WebElement confirm_alert;
-	
-
-
-
 }
