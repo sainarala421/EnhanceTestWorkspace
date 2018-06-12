@@ -4,10 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class HomePage extends BaseClass
-{
-	public HomePage(WebDriver driver)
-	{
+public class HomePage extends BaseClass{
+	public HomePage(WebDriver driver){
 		super(driver);
 	}
 	@FindBy(how=How.CSS, using=".iop-header-links .container")

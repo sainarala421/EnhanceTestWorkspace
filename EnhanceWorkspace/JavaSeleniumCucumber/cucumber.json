@@ -1,0 +1,133 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 2388194437,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.openBrowser()"
+            }
+          }
+        ],
+        "line": 2,
+        "name": "Verify order confirmation page and order successful",
+        "description": "",
+        "id": "order-confirmation;verify-order-confirmation-page-and-order-successful",
+        "after": [
+          {
+            "result": {
+              "duration": 586659626,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.embedScreenshot(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 8795042212,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "I open automationpractice website",
+            "match": {
+              "location": "SigninSignoutContactUsSteps.i_open_automationpractice_website()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3831982746,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I sign in",
+            "match": {
+              "location": "SigninSignoutContactUsSteps.i_sign_in()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5,
+            "name": "I select a dress and proceed to checkout",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "I verify details on shoppingCart summary page",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "I verify address and proceed",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "I verify shipping details and proceed",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "I verify payment details page and proceed",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 10,
+            "name": "I verify order summary page and proceed",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 11,
+            "name": "I verify order confirmation page details and verify success message",
+            "match": {
+              "location": "OrderConfirmationSteps.i_verify_order_confirmation_page_details_and_verify_success_message()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Order Confirmation",
+    "description": "",
+    "id": "order-confirmation",
+    "keyword": "Feature",
+    "uri": "features/functionalityTests/OrderConfirmation.feature"
+  }
+]

@@ -27,8 +27,17 @@ geckodriver.log
 
 /target
 /Screenshots
-.classpath*
-.metadata/.plugins/*
-*.metadata*
-*.metadata/.*
-/.recommenders/
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
