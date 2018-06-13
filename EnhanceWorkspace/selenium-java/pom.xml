@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>nz.co.enhanceconsulting</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>3.7.1</version>
-    <packaging>jar</packaging>
+    <artifactId>desktopWeb</artifactId>
+    <version>1.0</version>
     <name>selenium-java</name>
     <description>
         Selenium automates browsers. That's it! What you do with that power is entirely up to you.
@@ -177,4 +179,5 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
 </project>
