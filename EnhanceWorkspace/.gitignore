@@ -30,7 +30,7 @@ geckodriver.log
 *.pydevproject
 .project
 /.plugins/
-.metadata/*
+
 bin/**
 tmp/**
 tmp/**/*
@@ -44,4 +44,6 @@ local.properties
 .loadpath
 .recommenders/
 /.metadata/
-*metadata*
+.metadata/*
+.metadata
+*.idea*
