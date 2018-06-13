@@ -25,11 +25,12 @@ geckodriver.log
 *.DS_Store*
 .scannerwork*
 
-/target
+*/target/*
 /Screenshots
 *.pydevproject
 .project
-.metadata
+/.plugins/
+.metadata/*
 bin/**
 tmp/**
 tmp/**/*
@@ -41,3 +42,5 @@ local.properties
 .classpath
 .settings/
 .loadpath
+.recommenders/
+/.metadata/
