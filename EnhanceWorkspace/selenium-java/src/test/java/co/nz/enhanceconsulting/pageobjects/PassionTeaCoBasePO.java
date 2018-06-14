@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import co.nz.enhanceconsulting.globalvariables.GlobalVARS;
-import co.nz.enhanceconsulting.driver.CreateDriver;
+import co.nz.enhanceconsulting.library.CreateWebDriver;
 import co.nz.enhanceconsulting.utils.BrowserUtils;
 
 import static org.testng.Assert.assertEquals;
@@ -23,7 +23,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
 
     // constructor
     public PassionTeaCoBasePO() throws Exception {
-        PageFactory.initElements(CreateDriver.getInstance().getDriver(),this);
+        PageFactory.initElements(CreateWebDriver.getInstance().getDriver(),this);
     }
 
     // elements
@@ -68,7 +68,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
      * @throws AssertionError
      */
     public void verifyTitle(String title) throws AssertionError {
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
 
         assertEquals(driver.getTitle(), title, "Verify Page Title");
     }
@@ -80,7 +80,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
      * @throws Exception
      */
     public void navigate(String page) throws Exception {
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
         BrowserUtils.waitForClickable(By.xpath("//a[contains(text(),'" + page + "')]"), GlobalVARS.TIMEOUT_MINUTE);
         driver.findElement(By.xpath("//a[contains(text(),'" + page + "')]")).click();
 
@@ -96,7 +96,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
      * @throws Exception
      */
     public void loadPage(String url, int timeout) throws Exception {
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
         driver.navigate().to(url);
 
         // wait for page URL
@@ -112,7 +112,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
      */
     public void verifySpan(String pattern, String text) throws AssertionError {
         String getText = null;
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
 
         getText = driver.findElement(By.xpath("//span[contains(text(),'" + pattern + "')]")).getText();
         assertEquals(getText, text, "Verify Span Text");
@@ -127,7 +127,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
      */
     public void verifyHeading(String pattern, String text) throws AssertionError {
         String getText = null;
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
 
         getText = driver.findElement(By.xpath("//h1[contains(text(),'" + pattern + "')]")).getText();
         assertEquals(getText, text, "Verify Heading Text");
@@ -142,7 +142,7 @@ public abstract class PassionTeaCoBasePO<M extends WebElement> {
      */
     public void verifyParagraph(String pattern, String text) throws AssertionError {
         String getText = null;
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
 
         getText = driver.findElement(By.xpath("//p[contains(text(),'" + pattern + "')]")).getText();
         assertEquals(getText, text, "Verify Paragraph Text");

@@ -3,7 +3,7 @@ package co.nz.enhanceconsulting.pageobjects;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import co.nz.enhanceconsulting.globalvariables.GlobalVARS;
-import co.nz.enhanceconsulting.driver.CreateDriver;
+import co.nz.enhanceconsulting.library.CreateWebDriver;
 import co.nz.enhanceconsulting.utils.BrowserUtils;
 
 import static org.testng.Assert.assertEquals;
@@ -138,7 +138,7 @@ public class PassionTeaCoWelcomePO<M extends WebElement> extends PassionTeaCoBas
      */
     public void navigateMenuLink(MENU_LINKS link, String title) throws Exception {
         String index = null;
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
 
         switch(link) {
             case HERBAL_TEA:

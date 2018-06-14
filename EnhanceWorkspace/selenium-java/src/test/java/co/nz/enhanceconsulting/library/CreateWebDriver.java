@@ -1,4 +1,4 @@
-package co.nz.enhanceconsulting.driver;
+package co.nz.enhanceconsulting.library;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,9 +23,9 @@ import java.util.concurrent.TimeUnit;
  * Selenium Driver Class
  *
  */
-public class CreateDriver {
+public class CreateWebDriver {
     // local variables
-    private static CreateDriver instance = null;
+    private static CreateWebDriver instance = null;
     private static final int IMPLICIT_TIMEOUT = 0;
     private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
     private ThreadLocal<String> sessionId = new ThreadLocal<String>();
@@ -36,17 +36,17 @@ public class CreateDriver {
     private Properties props = new Properties();
 
     // constructor
-    private CreateDriver() {
+    private CreateWebDriver() {
     }
 
     /**
      * getInstance method to retrieve active driver instance
      *
-     * @return CreateDriver
+     * @return CreateWebDriver
      */
-    public static CreateDriver getInstance() {
+    public static CreateWebDriver getInstance() {
         if ( instance == null ) {
-            instance = new CreateDriver();
+            instance = new CreateWebDriver();
         }
 
         return instance;
@@ -165,7 +165,6 @@ public class CreateDriver {
         try {
             getDriver().quit();
         }
-
         catch ( Exception e ) {
             // do something
         }

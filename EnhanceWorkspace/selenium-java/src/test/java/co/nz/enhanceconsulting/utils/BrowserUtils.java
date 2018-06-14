@@ -4,7 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import co.nz.enhanceconsulting.driver.CreateDriver;
+import co.nz.enhanceconsulting.library.CreateWebDriver;
 
 /**
  * @author Francis John Agunday
@@ -26,7 +26,7 @@ public class BrowserUtils {
                                int timer)
                                throws Exception {
 
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
         WebDriverWait exists = new WebDriverWait(driver, timer);
 
         exists.until( ExpectedConditions.refreshed(ExpectedConditions.titleContains(title)) );
@@ -43,7 +43,7 @@ public class BrowserUtils {
                                   int timer)
                                   throws Exception {
 
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
         WebDriverWait exists = new WebDriverWait(driver, timer);
 
         exists.until( ExpectedConditions.refreshed(ExpectedConditions.urlContains(url)) );
@@ -60,7 +60,7 @@ public class BrowserUtils {
                                         int timer)
                                         throws Exception {
 
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
         WebDriverWait exists = new WebDriverWait(driver, timer);
 
         exists.until( ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(by)) );
@@ -74,7 +74,7 @@ public class BrowserUtils {
      */
     public static void click(By by) throws Exception {
 
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
         WebElement element = driver.findElement(by);
 
         JavascriptExecutor js = (JavascriptExecutor)driver;

@@ -7,8 +7,9 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.annotations.Optional;
-import co.nz.enhanceconsulting.driver.CreateDriver;
+
 import co.nz.enhanceconsulting.globalvariables.GlobalVARS;
+import co.nz.enhanceconsulting.library.CreateWebDriver;
 import co.nz.enhanceconsulting.utils.JSONDataProvider;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO.WELCOME_PAGE_IMG;
@@ -95,7 +96,7 @@ public class PassionTeaCoTest{
         GlobalVARS.DEF_PLATFORM = System.getProperty("platform", platform);
 
         // create driver
-        CreateDriver.getInstance().setDriver(GlobalVARS.DEF_BROWSER,
+        CreateWebDriver.getInstance().setDriver(GlobalVARS.DEF_BROWSER,
                                              GlobalVARS.DEF_PLATFORM,
                                              GlobalVARS.DEF_ENVIRONMENT);
     }
@@ -108,7 +109,7 @@ public class PassionTeaCoTest{
     @AfterTest(alwaysRun = true, enabled = true)
     protected void testTeardown() throws Exception {
         // close driver
-        CreateDriver.getInstance().closeDriver();
+        CreateWebDriver.getInstance().closeDriver();
     }
 
     /**
@@ -157,7 +158,7 @@ public class PassionTeaCoTest{
      */
     @AfterMethod(alwaysRun = true, enabled = true)
     protected void testMethodTeardown(ITestResult result) throws Exception {
-        WebDriver driver = CreateDriver.getInstance().getDriver();
+        WebDriver driver = CreateWebDriver.getInstance().getDriver();
 
         if ( !driver.getCurrentUrl().contains("welcome.html") ) {
             welcome.setTitle("Welcome");
