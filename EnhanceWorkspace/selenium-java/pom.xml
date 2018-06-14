@@ -26,6 +26,8 @@
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cucumber.version>1.2.0</cucumber.version>
+        <picocontainer.version>2.15</picocontainer.version>
     </properties>
     <dependencies>
         <dependency>
@@ -178,7 +180,23 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+    </dependencies> 
     <build>
         <plugins>
             <plugin>

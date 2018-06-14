@@ -14,6 +14,11 @@ import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO.WELCOME_PAGE_IMG;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO.MENU_LINKS;
 
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
+
+
 /**
  * @author Francis John Agunday
  *
@@ -163,15 +168,16 @@ public class PassionTeaCoTest{
     // test methods
 
     /**
-     * tc001_passionTeaCo method to test page navigation
+     * user_navigates_to_passion_tea_new_page
      *
      * @param rowID
      * @param description
      * @param testData
      * @throws Exception
      */
+    @When("^User navigates to Passion Tea New page$")
     @Test(groups={"PASSION_TEA"}, dataProvider="fetchData_JSON", dataProviderClass=JSONDataProvider.class, enabled=true)
-    public void tc001_passionTeaCo(String rowID,
+    public void user_navigates_to_passion_tea_new_page(String rowID,
                                    String description,
                                    JSONObject testData) throws Exception {
 
