@@ -11,11 +11,11 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import co.nz.enhanceconsulting.globalvariables.GlobalVARS;
+
 import java.io.FileInputStream;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-
-import co.nz.enhanceconsulting.utils.Global_VARS;;
 
 /**
  * @author Francis John Agunday
@@ -70,7 +70,7 @@ public class CreateDriver {
 
         DesiredCapabilities caps = null;
         String getPlatform = null;
-        props.load(new FileInputStream(Global_VARS.SE_PROPS));
+        props.load(new FileInputStream(GlobalVARS.SE_PROPS));
 
         switch (browser) {
             case "firefox":
@@ -87,7 +87,7 @@ public class CreateDriver {
 
                 // then pass them to the local WebDriver
                 if ( environment.equalsIgnoreCase("local") ) {
-                    System.setProperty("webdriver.gecko.driver", props.getProperty("gecko.driver.windows.path"));
+                    System.setProperty("webdriver.gecko.driver", props.getProperty("gecko.driver.osx.path"));
                     webDriver.set(new FirefoxDriver(ffOpts.merge(caps)));
                 }
 
@@ -107,7 +107,7 @@ public class CreateDriver {
                 caps.setCapability("applicationCacheEnabled", false);
 
                 if ( environment.equalsIgnoreCase("local") ) {
-                    System.setProperty("webdriver.chrome.driver", props.getProperty("chrome.driver.windows.path"));
+                    System.setProperty("webdriver.chrome.driver", props.getProperty("chrome.driver.osx.path"));
                     webDriver.set(new ChromeDriver(chOptions.merge(caps)));
                 }
 
@@ -123,7 +123,7 @@ public class CreateDriver {
                 caps.setCapability("requireWindowFocus", true);
 
                 if ( environment.equalsIgnoreCase("local") ) {
-                    System.setProperty("webdriver.ie.driver", props.getProperty("ie.driver.windows.path"));
+                    System.setProperty("webdriver.ie.driver", props.getProperty("ie.driver.osx.path"));
                     webDriver.set(new InternetExplorerDriver(ieOpts.merge(caps)));
                 }
 

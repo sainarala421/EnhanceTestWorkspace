@@ -1,5 +1,6 @@
 package co.nz.enhanceconsulting.utils;
 
+import co.nz.enhanceconsulting.globalvariables.GlobalVARS;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -23,7 +24,7 @@ import java.util.*;
  *
  */
 public class ExtentTestNGIReporterListener implements IReporter {
-    private String bitmapDir = Global_VARS.REPORT_PATH;
+    private String bitmapDir = GlobalVARS.REPORT_PATH;
     private String seleniumRev = "3.7.1", docTitle = "SELENIUM FRAMEWORK DESIGN IN DATA-DRIVEN TESTING";
     private ExtentReports extent;
 
@@ -62,13 +63,13 @@ public class ExtentTestNGIReporterListener implements IReporter {
      * @param suite
      */
     private void init(ISuite suite) {
-        File directory = new File(Global_VARS.REPORT_PATH);
+        File directory = new File(GlobalVARS.REPORT_PATH);
 
         if ( !directory.exists() ) {
             directory.mkdirs();
         }
 
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(Global_VARS.REPORT_PATH + suite.getName() + ".html");
+        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(GlobalVARS.REPORT_PATH + suite.getName() + ".html");
 
         // report attributes
         htmlReporter.config().setDocumentTitle(docTitle);
@@ -78,14 +79,14 @@ public class ExtentTestNGIReporterListener implements IReporter {
         htmlReporter.config().setEncoding("UTF-8");
         htmlReporter.config().setProtocol(Protocol.HTTPS);
         htmlReporter.config().setTimeStampFormat("MMM-dd-yyyy HH:mm:ss a");
-        htmlReporter.loadXMLConfig(new File(Global_VARS.REPORT_CONFIG_FILE));
+        htmlReporter.loadXMLConfig(new File(GlobalVARS.REPORT_CONFIG_FILE));
 
         extent = new ExtentReports();
 
         // report system info
-        extent.setSystemInfo("Browser", Global_VARS.DEF_BROWSER);
-        extent.setSystemInfo("Environment", Global_VARS.DEF_ENVIRONMENT);
-        extent.setSystemInfo("Platform", Global_VARS.DEF_PLATFORM);
+        extent.setSystemInfo("Browser", GlobalVARS.DEF_BROWSER);
+        extent.setSystemInfo("Environment", GlobalVARS.DEF_ENVIRONMENT);
+        extent.setSystemInfo("Platform", GlobalVARS.DEF_PLATFORM);
         extent.setSystemInfo("OS Version", System.getProperty("os.version"));
         extent.setSystemInfo("Java Version", System.getProperty("java.version"));
         extent.setSystemInfo("Selenium Version", seleniumRev);
@@ -236,7 +237,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
      * @throws Exception
      */
     private String getTestParams(ITestResult tr) throws Exception {
-        TestNG_ConsoleRunner runner = new TestNG_ConsoleRunner();
+        TestNGConsoleRunner runner = new TestNGConsoleRunner();
 
         return runner.getTestParams(tr);
     }

@@ -179,5 +179,31 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgument>-Werror</compilerArgument>
+
+                    <systemPropertyVariables>
+                        <property>
+                            <name>browser</name>
+                            <value>${browser}</value>
+                        </property>
+                        <property>
+                            <name>cloud_config</name>
+                            <value>${cloud_config}</value>
+                        </property>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
