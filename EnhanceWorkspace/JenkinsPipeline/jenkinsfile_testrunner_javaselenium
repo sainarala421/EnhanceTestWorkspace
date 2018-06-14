@@ -77,7 +77,7 @@
                     allowMissing: false, 
                     alwaysLinkToLastBuild: false, 
                     keepAll: true, 
-                    reportDir: 'target/surefire-reports', 
+                    reportDir: 'EnhanceWorkspace/selenium-java/target/surefire-reports', 
                     reportFiles: 'index.html', 
                     reportName: 'HTML Report', 
                     reportTitles: ''
