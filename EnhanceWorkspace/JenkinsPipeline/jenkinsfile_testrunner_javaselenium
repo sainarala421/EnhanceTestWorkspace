@@ -72,19 +72,20 @@
             /* mail to:"agundayfrancis@gmail.com",
                 subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
                 body: "RESULT: ${currentBuild.result}" */
-            script{
-                publishHTML([
-                    allowMissing: false, 
-                    alwaysLinkToLastBuild: false, 
-                    keepAll: true,
-                    alwaysLinkToLastBuild: true,
-                    reportDir: 'EnhanceWorkspace/selenium-java/target/surefire-reports', 
-                    reportFiles: 'index.html', 
-                    reportName: 'HTML Report', 
-                    reportTitles: ''
-                ])
 
-                /*
+            publishHTML([
+                allowMissing: false, 
+                alwaysLinkToLastBuild: false, 
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                reportDir: 'EnhanceWorkspace/selenium-java/target/surefire-reports', 
+                reportFiles: 'index.html', 
+                reportName: 'HTML Report', 
+                reportTitles: ''
+            ])
+            /*
+            script{
+                
                 try{
                     echo "Send notifications for result: ${currentBuild.result}"
 
@@ -93,8 +94,8 @@
                         echo "Send notifications for result: ${currentBuild.result}"
                         throw e
                     }
-                */
-            }
+                
+            }   */
         }
     }
 
