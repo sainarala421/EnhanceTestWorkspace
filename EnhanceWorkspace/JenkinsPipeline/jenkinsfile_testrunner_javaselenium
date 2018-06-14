@@ -43,6 +43,7 @@
                     // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
                     sh '''#!/bin/bash
                         cd EnhanceWorkspace
+                        mvn clean
                         $SONAR_SCANNER_PATH/sonar-scanner
                     '''
                 }
