@@ -37,17 +37,7 @@
                 '''
             }
         }
-        stage ("Stage 2: Get agent details") {
-            steps {
-                sh '''#!/bin/bash
-                    cd EnhanceWorkspace/$TEST_SUITE_PATH
-                    mvn clean
-                    mvn test -DBrowser=TEST_BROWSER
-                '''
-            }
-        }
-        
-        stage ('Stage 3: Code analysis.') {
+        stage ('Stage 2: Code analysis.') {
             steps {
                 withSonarQubeEnv('Local SonarQube') {
                     // sq-scanner value set in Jenkins > Global Tool Configuration seems to not work
@@ -64,6 +54,15 @@
                         }
                     }
                 }
+            }
+        }
+        stage ("Stage 3: Run Maven Tests") {
+            steps {
+                sh '''#!/bin/bash
+                    cd EnhanceWorkspace/$TEST_SUITE_PATH
+                    mvn clean
+                    mvn test -DBrowser=TEST_BROWSER
+                '''
             }
         }
     }
