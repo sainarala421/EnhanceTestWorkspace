@@ -76,7 +76,8 @@
                 publishHTML([
                     allowMissing: false, 
                     alwaysLinkToLastBuild: false, 
-                    keepAll: true, 
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
                     reportDir: 'EnhanceWorkspace/selenium-java/target/surefire-reports', 
                     reportFiles: 'index.html', 
                     reportName: 'HTML Report', 
