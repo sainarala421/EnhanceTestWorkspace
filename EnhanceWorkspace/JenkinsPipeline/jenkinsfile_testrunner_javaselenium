@@ -46,7 +46,7 @@
                 '''
             }
         }
-        /*
+        
         stage ('Stage 3: Code analysis.') {
             steps {
                 withSonarQubeEnv('Local SonarQube') {
@@ -65,14 +65,10 @@
                     }
                 }
             }
-        }*/
+        }
     }
     post {
         always {
-            /* mail to:"agundayfrancis@gmail.com",
-                subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
-                body: "RESULT: ${currentBuild.result}" */
-
             publishHTML([
                 allowMissing: false, 
                 alwaysLinkToLastBuild: false, 
@@ -83,19 +79,6 @@
                 reportName: 'HTML Report', 
                 reportTitles: ''
             ])
-            /*
-            script{
-                
-                try{
-                    echo "Send notifications for result: ${currentBuild.result}"
-
-
-                    } catch(e) {
-                        echo "Send notifications for result: ${currentBuild.result}"
-                        throw e
-                    }
-                
-            }   */
         }
     }
 
