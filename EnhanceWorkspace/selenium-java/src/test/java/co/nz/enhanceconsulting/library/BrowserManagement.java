@@ -38,7 +38,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+//import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -69,7 +69,6 @@ import co.nz.enhanceconsulting.utils.WebDriverCache.SessionIdAliasWebDriverTuple
 
 @RobotKeywords
 public class BrowserManagement extends RunOnFailureKeywordsAdapter {
-
 	public String remoteWebDriverProxyHost = "";
 	public String remoteWebDriverProxyPort = "";
 	public String remoteWebDriverProxyUser = "";
@@ -1405,13 +1404,16 @@ public class BrowserManagement extends RunOnFailureKeywordsAdapter {
 			SafariOptions options = new SafariOptions();
 			options.setCapability("safari", desiredCapabilities);
 			return new SafariDriver(options);
-		} else if ("htmlunit".equals(browserName)) {
+		} 
+		/*
+		else if ("htmlunit".equals(browserName)) {
 			return new HtmlUnitDriver(desiredCapabilities);
 		} else if ("htmlunitwithjs".equals(browserName)) {
 			HtmlUnitDriver driver = new HtmlUnitDriver(desiredCapabilities);
 			driver.setJavascriptEnabled(true);
 			return driver;
-		} else if ("iphone".equals(browserName) || "ipad".equals(browserName)) {
+		} */
+		else if ("iphone".equals(browserName) || "ipad".equals(browserName)) {
 			try {
 				return new IOSDriver<WebElement>(new URL(""), desiredCapabilities);
 			} catch (Exception e) {
