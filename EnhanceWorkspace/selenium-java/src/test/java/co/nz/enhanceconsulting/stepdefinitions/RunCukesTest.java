@@ -1,16 +1,22 @@
 package co.nz.enhanceconsulting.stepdefinitions;
 
 import org.junit.runner.RunWith;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
-
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "classpath:features",
-		plugin = {"pretty", "html:target/cucumber-html-report","json:cucumber.json"},
-		tags = {}
-		)
-public class RunCukesTest{
-	
+		plugin = {
+			 "pretty", "html:target/cucumberHtmlReport",
+		     "html:target/cucumberHtmlReport",     //  for html result
+			 "pretty:target/cucumber-json-report.json"   // for json result
+		     },
+		features = "classpath:src/test/resources/features",
+		glue = {"co.nz.enhanceconsulting.stepdefinitions"   // predefined step definitions package
+				//"info.seleniumcucumber.userStepDefintions" // user step definitions package
+			   }
+)
+
+public class RunCukesTest { 	
 }

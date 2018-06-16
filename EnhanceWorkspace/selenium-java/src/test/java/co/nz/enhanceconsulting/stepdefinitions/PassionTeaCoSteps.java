@@ -14,11 +14,11 @@ import co.nz.enhanceconsulting.utils.JSONDataProvider;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO.WELCOME_PAGE_IMG;
 import co.nz.enhanceconsulting.pageobjects.PassionTeaCoWelcomePO.MENU_LINKS;
-
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
-
+import cucumber.api.Scenario;
 
 /**
  * @author Francis John Agunday
@@ -26,14 +26,14 @@ import cucumber.api.java.en.Then;
  * Passion Tea Co Test Class
  *
  */
-public class PassionTeaCoTest{
+public class PassionTeaCoSteps{
     // local vars
     private PassionTeaCoWelcomePO<WebElement> welcome = null;
     private static final String DATA_FILE = "src/test/resources/testdata/PassionTeaCo.json";
     BrowserManagement bm = new BrowserManagement();
     //public static BrowserManagement bm;
     // constructor
-    public PassionTeaCoTest() throws Exception {
+    public PassionTeaCoSteps() throws Exception {
     }
 
     // setup/teardown methods
@@ -45,21 +45,7 @@ public class PassionTeaCoTest{
      * @param context
      * @throws Exception
      */
-    
-    //@Test(alwaysRun = true, enabled=true)
-    @When("^User opens url \"(.*?)\" in \"(.*?)\" browser$")
-    public void user_opens_browser(String url, String browser) throws Throwable{
-    	String x = bm.getSystemInfo();
-    	System.out.println(x);
-    	
-    	bm.openBrowser(url, browser);
-    	bm.goTo("https://www.netflix.com/");
-    	String a = bm.getTitle();
-    	System.out.println(a);
-    	String z = bm.getRemoteCapabilities();
-    	System.out.println(z);
-    }
-    
+
     /*
     @Parameters({"url","browser"})
     //@BeforeTest(alwaysRun = true, enabled = true)

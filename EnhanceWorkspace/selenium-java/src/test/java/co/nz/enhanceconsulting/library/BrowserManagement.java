@@ -68,6 +68,8 @@ import co.nz.enhanceconsulting.locators.WindowManager;
 import co.nz.enhanceconsulting.utils.Robotframework;
 import co.nz.enhanceconsulting.utils.WebDriverCache;
 import co.nz.enhanceconsulting.utils.WebDriverCache.SessionIdAliasWebDriverTuple;
+import co.nz.enhanceconsulting.library.Logging;
+import org.apache.log4j.Logger;
 
 @RobotKeywords
 public class BrowserManagement extends RunOnFailureKeywordsAdapter {
@@ -400,8 +402,8 @@ public class BrowserManagement extends RunOnFailureKeywordsAdapter {
 			if (remoteUrl != null) {
 				System.out.printf("Opening browser '%s' to base url '%s' through remote server at '%s'",
 						browserName, url, remoteUrl);
-				//logging.info(String.format("Opening browser '%s' to base url '%s' through remote server at '%s'",
-				//		browserName, url, remoteUrl));
+				/*logging.info(String.format("Opening browser '%s' to base url '%s' through remote server at '%s'",
+						browserName, url, remoteUrl));*/
 			} else {
 				System.out.printf("Opening browser '%s' to base url '%s'", browserName, url);
 				//logging.info(String.format("Opening browser '%s' to base url '%s'", browserName, url));
@@ -1384,30 +1386,24 @@ public class BrowserManagement extends RunOnFailureKeywordsAdapter {
 
 	protected WebDriver createWebDriver(String browserName, String desiredCapabilitiesString, String remoteUrlString,
 			String browserOptions) throws MalformedURLException {
-		System.out.println("Line 1371");
 		browserName = browserName.toLowerCase().replace(" ", "");
 		DesiredCapabilities desiredCapabilities = createDesiredCapabilities(browserName, desiredCapabilitiesString,
 				browserOptions);
 
 		WebDriver webDriver;
 		if (remoteUrlString != null && !"False".equals(remoteUrlString)) {
-			System.out.println("Line 1378");
 			webDriver = createRemoteWebDriver(desiredCapabilities, new URL(remoteUrlString));
 		} else {
-			System.out.println("Line 1381");
 			webDriver = createLocalWebDriver(browserName, desiredCapabilities);
-			System.out.println("Line 1383");
 		}
 
 		webDriver.manage().timeouts().setScriptTimeout((int) (timeout * 1000.0), TimeUnit.MILLISECONDS);
 		webDriver.manage().timeouts().implicitlyWait((int) (implicitWait * 1000.0), TimeUnit.MILLISECONDS);
-		System.out.println("Line 1385");
 		return webDriver;
 		
 	}
 
 	protected WebDriver createLocalWebDriver(String browserName, DesiredCapabilities desiredCapabilities) {
-		System.out.println("Line 1394");
 		if ("ff".equals(browserName) || "firefox".equals(browserName)) {
 			// return new FirefoxDriver(desiredCapabilities);  -- FOR DELETION
 			FirefoxOptions options = new FirefoxOptions();
@@ -1419,9 +1415,7 @@ public class BrowserManagement extends RunOnFailureKeywordsAdapter {
 			options.setCapability(browserName, desiredCapabilities);
 			return new InternetExplorerDriver(options);
 		} else if ("gc".equals(browserName) || "chrome".equals(browserName) || "googlechrome".equals(browserName)) {
-			System.out.println("Line 1404");
 			ChromeOptions options = new ChromeOptions();
-			System.out.println("Line 1405");
 			desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			//options.setCapability(browserName, desiredCapabilities);
 			return new ChromeDriver(options.merge(desiredCapabilities));
